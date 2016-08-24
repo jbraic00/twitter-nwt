@@ -9,17 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var common_1 = require('@angular/common');
+var dashboard_component_1 = require('./dashboard.component');
+var dashboard_routing_1 = require('./dashboard.routing');
+var DashboardModule = (function () {
+    function DashboardModule() {
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'my-app',
-            template: '<router-outlet></router-outlet>'
+    DashboardModule = __decorate([
+        core_1.NgModule({
+            imports: [common_1.CommonModule, dashboard_routing_1.dashboardRouting],
+            declarations: [dashboard_component_1.DashboardComponent]
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], DashboardModule);
+    return DashboardModule;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.DashboardModule = DashboardModule;
+//# sourceMappingURL=dashboard.module.js.map
