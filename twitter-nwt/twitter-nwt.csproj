@@ -5135,6 +5135,10 @@
   <ItemGroup>
     <TypeScriptCompile Include="Assets\app\app.component.ts" />
     <TypeScriptCompile Include="Assets\app\app.module.ts" />
+    <TypeScriptCompile Include="Assets\app\app.routing.ts" />
+    <TypeScriptCompile Include="Assets\app\dashboard\dashboard.component.ts" />
+    <TypeScriptCompile Include="Assets\app\dashboard\dashboard.module.ts" />
+    <TypeScriptCompile Include="Assets\app\dashboard\dashboard.routing.ts" />
     <TypeScriptCompile Include="Assets\app\main.ts" />
     <TypeScriptCompile Include="Assets\node_modules\%40angular\common\esm\index.d.ts" />
     <TypeScriptCompile Include="Assets\node_modules\%40angular\common\esm\src\common_directives.d.ts" />

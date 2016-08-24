@@ -2,7 +2,7 @@
 
 @Component({
     selector: 'my-app',
-    template: '<h1>Hello from angular!</h1>'
+    template: '<router-outlet></router-outlet>'
 })
 
 export class AppComponent { }
