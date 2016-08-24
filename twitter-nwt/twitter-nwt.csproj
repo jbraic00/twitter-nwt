@@ -5140,6 +5140,8 @@
     <TypeScriptCompile Include="Assets\app\dashboard\dashboard.module.ts" />
     <TypeScriptCompile Include="Assets\app\dashboard\dashboard.routing.ts" />
     <TypeScriptCompile Include="Assets\app\main.ts" />
+    <TypeScriptCompile Include="Assets\app\profile\profile.component.ts" />
+    <TypeScriptCompile Include="Assets\app\tweets\tweets-list.component.ts" />
     <TypeScriptCompile Include="Assets\node_modules\%40angular\common\esm\index.d.ts" />
     <TypeScriptCompile Include="Assets\node_modules\%40angular\common\esm\src\common_directives.d.ts" />
     <TypeScriptCompile Include="Assets\node_modules\%40angular\common\esm\src\directives.d.ts" />

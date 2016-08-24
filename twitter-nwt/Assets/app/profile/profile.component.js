@@ -9,17 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var DashboardComponent = (function () {
-    function DashboardComponent() {
+var ProfileComponent = (function () {
+    function ProfileComponent() {
     }
-    DashboardComponent = __decorate([
+    ProfileComponent = __decorate([
         core_1.Component({
-            selector: 'dashboard',
-            template: "\n        <a class=\"btn btn-primary\" routerLink=\"/dashboard\" routerLinkActive=\"active\">Tweets</a>\n        <a class=\"btn btn-danger\" routerLink=\"/dashboard/profile\" routerLinkActive=\"active\">Profile</a>\n        <router-outlet></router-outlet>\n    "
+            selector: 'my-profile',
+            template: '<h3>My profile</h3>'
         }), 
         __metadata('design:paramtypes', [])
-    ], DashboardComponent);
-    return DashboardComponent;
+    ], ProfileComponent);
+    return ProfileComponent;
 }());
-exports.DashboardComponent = DashboardComponent;
-//# sourceMappingURL=dashboard.component.js.map
+exports.ProfileComponent = ProfileComponent;
+//# sourceMappingURL=profile.component.js.map
