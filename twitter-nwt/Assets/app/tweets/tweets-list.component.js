@@ -9,17 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var DashboardComponent = (function () {
-    function DashboardComponent() {
+var TweetsListComponent = (function () {
+    function TweetsListComponent() {
     }
-    DashboardComponent = __decorate([
+    TweetsListComponent = __decorate([
         core_1.Component({
-            selector: 'dashboard',
-            template: "\n        <a class=\"btn btn-primary\" routerLink=\"/dashboard\" routerLinkActive=\"active\">Tweets</a>\n        <a class=\"btn btn-danger\" routerLink=\"/dashboard/profile\" routerLinkActive=\"active\">Profile</a>\n        <router-outlet></router-outlet>\n    "
+            selector: 'tweets-list',
+            template: '<h3>Tweets list</h3>'
         }), 
         __metadata('design:paramtypes', [])
-    ], DashboardComponent);
-    return DashboardComponent;
+    ], TweetsListComponent);
+    return TweetsListComponent;
 }());
-exports.DashboardComponent = DashboardComponent;
-//# sourceMappingURL=dashboard.component.js.map
+exports.TweetsListComponent = TweetsListComponent;
+//# sourceMappingURL=tweets-list.component.js.map

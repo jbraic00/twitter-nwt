@@ -11,6 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var dashboard_component_1 = require('./dashboard.component');
+var profile_component_1 = require('./../profile/profile.component');
+var tweets_list_component_1 = require('./../tweets/tweets-list.component');
 var dashboard_routing_1 = require('./dashboard.routing');
 var DashboardModule = (function () {
     function DashboardModule() {
@@ -18,7 +20,7 @@ var DashboardModule = (function () {
     DashboardModule = __decorate([
         core_1.NgModule({
             imports: [common_1.CommonModule, dashboard_routing_1.dashboardRouting],
-            declarations: [dashboard_component_1.DashboardComponent]
+            declarations: [dashboard_component_1.DashboardComponent, profile_component_1.ProfileComponent, tweets_list_component_1.TweetsListComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], DashboardModule);
