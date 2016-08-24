@@ -9,15 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var UserService_1 = require('./../Common/Services/UserService');
 var ProfileComponent = (function () {
-    function ProfileComponent() {
+    function ProfileComponent(userService) {
+        this.userService = userService;
     }
+    ProfileComponent.prototype.ngOnInit = function () { this.getUsers(); };
+    ProfileComponent.prototype.getUsers = function () {
+        var _this = this;
+        this.userService.getUsers()
+            .subscribe(function (users) { _this.users = users; console.log("Users: ", _this.users); console.log("First user's username: ", _this.users[0]["Username"]); }, function (error) { return _this.errorMessage = error; });
+    };
     ProfileComponent = __decorate([
         core_1.Component({
             selector: 'my-profile',
-            template: '<h3>My profile</h3>'
+            template: '<h3>My profile</h3>',
+            providers: [UserService_1.UserService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [UserService_1.UserService])
     ], ProfileComponent);
     return ProfileComponent;
 }());
