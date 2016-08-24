@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
+var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
 var app_routing_1 = require('./app.routing');
 var dashboard_module_1 = require('./dashboard/dashboard.module');
@@ -18,7 +19,7 @@ var AppModule = (function () {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, app_routing_1.routing, dashboard_module_1.DashboardModule],
+            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, app_routing_1.routing, dashboard_module_1.DashboardModule],
             declarations: [app_component_1.AppComponent],
             providers: [app_routing_1.appRoutingProviders],
             bootstrap: [app_component_1.AppComponent]
