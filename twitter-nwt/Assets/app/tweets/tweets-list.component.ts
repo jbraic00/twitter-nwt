@@ -2,7 +2,7 @@
 
 @Component({
     selector: 'tweets-list',
-    template: '<h3>Tweets list</h3>'
+    template: '<h3>Tweets listttt</h3>'
 })
 
 export class TweetsListComponent { }

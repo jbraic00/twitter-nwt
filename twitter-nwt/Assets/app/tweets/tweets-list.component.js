@@ -15,7 +15,7 @@ var TweetsListComponent = (function () {
     TweetsListComponent = __decorate([
         core_1.Component({
             selector: 'tweets-list',
-            template: '<h3>Tweets list</h3>'
+            template: '<h3>Tweets listttt</h3>'
         }), 
         __metadata('design:paramtypes', [])
     ], TweetsListComponent);
