@@ -2,7 +2,7 @@
 import { Comment } from './Comment';
 
 export class User {
-    public ID: number;
+    public id: number;
     public username: string;
     public password: string;
     public name: string;
@@ -14,8 +14,8 @@ export class User {
     public followedBy: User[];
     public comments: Comment[];
 
-    constructor(ID: number = Math.random(), username: string, password: string, name: string, lastname: string, email: string, myTweets: Tweet[] = [], favoritedTweets: Tweet[] = [], followingUsers: User[] = [], followedBy: User[] = [], comments: Comment[] = []) {
-        this.ID = ID;
+    constructor(id: number = Math.random(), username: string, password: string, name: string, lastname: string, email: string, myTweets: Tweet[] = [], favoritedTweets: Tweet[] = [], followingUsers: User[] = [], followedBy: User[] = [], comments: Comment[] = []) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;

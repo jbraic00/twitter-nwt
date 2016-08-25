@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
     getUsers() {
         this.userService.getUsers()
             .subscribe(
-            users => { this.users = users; console.log("Users: ", this.users); console.log("First user's username: ", this.users[0]["Username"]); },
+            users => { this.users = users; console.log("Users: ", this.users); console.log("First user's username: ", this.users[0].username); },
             error => this.errorMessage = <any>error
         );
     }
