@@ -1,17 +1,23 @@
 ﻿import { Component, OnInit } from '@angular/core';
 
+import { FORM_DIRECTIVES } from '@angular/common';
+
 import { User } from './../Common/Models/User';
 import { UserService } from './../Common/Services/UserService';
 
 @Component({
+    moduleId: module.id,
     selector: 'my-profile',
-    template: '<h3>My profile</h3>',
-    providers: [UserService]
+    templateUrl: 'profile.template.html',
+    providers: [UserService],
+    directives: [FORM_DIRECTIVES]
 })
 
 export class ProfileComponent implements OnInit {
     errorMessage: string;
     users: User[];
+    firstUser: User;
+    updatedUser: any;
 
     constructor(private userService: UserService) { }
 
@@ -20,8 +26,26 @@ export class ProfileComponent implements OnInit {
     getUsers() {
         this.userService.getUsers()
             .subscribe(
-            users => { this.users = users; console.log("Users: ", this.users); console.log("First user's username: ", this.users[0].username); },
+            users => { this.users = users; console.log("Users: ", this.users); console.log("First user's username: ", this.users[0].username); this.firstUser = this.users[0]; },
             error => this.errorMessage = <any>error
         );
+    }
+
+    updateUser(updatedUsername: string) {
+        if (!updatedUsername) { return; }
+        console.log(updatedUsername);
+        this.updatedUser = {
+            id: this.firstUser.id,
+            username: updatedUsername,
+            password: this.firstUser.password,
+            name: this.firstUser.name,
+            lastname: this.firstUser.lastname,
+            email: this.firstUser.email
+        }
+        this.userService.updateUser(this.updatedUser)
+            .subscribe(
+            user => { this.firstUser = user; console.log("Updated user data: ", this.firstUser); },
+                error => this.errorMessage = <any>error
+            );
     }
 }

@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import { User } from './../Models/User';
 import { Observable } from 'rxjs/observable';
@@ -10,6 +10,25 @@ export class UserService {
 
     getUsers(): Observable<User[]> {
         return this.http.get('api/users')
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    updateUser(user: User): Observable<User> {
+        let updatedUser = {
+            Id: user.id,
+            Username: user.username,
+            Password: user.password,
+            Name: user.name,
+            Lastname: user.lastname,
+            Email: user.email
+        };
+        let body = JSON.stringify(updatedUser);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        console.log("In update user!");
+        console.log(body);
+        return this.http.put('api/users/update', body, options)
             .map(this.extractData)
             .catch(this.handleError);
     }

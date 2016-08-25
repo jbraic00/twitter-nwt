@@ -27,8 +27,8 @@ namespace twitter_nwt.DAL
                 .HasMany(tweets => tweets.UsersThatFavorited)
                 .WithMany(users => users.FavoritedTweets)
                 .Map(favouritedTweets => favouritedTweets
-                    .MapLeftKey("TweetID")
-                    .MapRightKey("UserID")
+                    .MapLeftKey("TweetId")
+                    .MapRightKey("UserId")
                     .ToTable("TweetsFavouritedByUsers"));
 
             modelBuilder.Entity<Tweet>()
@@ -40,16 +40,16 @@ namespace twitter_nwt.DAL
                 .HasMany(h => h.Tweets)
                 .WithMany(t => t.Hashtags)
                 .Map(hashtagTweets => hashtagTweets
-                    .MapLeftKey("HashtagID")
-                    .MapRightKey("TweetID")
+                    .MapLeftKey("HashtagId")
+                    .MapRightKey("TweetId")
                     .ToTable("HashtagTweets"));
 
             modelBuilder.Entity<User>()
                 .HasMany(user => user.FollowingUsers)
                 .WithMany(followedUsers => followedUsers.FollowedBy)
                 .Map(userFollowers => userFollowers
-                    .MapLeftKey("FollowedByID")
-                    .MapRightKey("FollowingID")
+                    .MapLeftKey("FollowedById")
+                    .MapRightKey("FollowingId")
                     .ToTable("UserFollowsUser"));
         }
     }

@@ -10,7 +10,8 @@ namespace twitter_nwt.Models
 {
     public class Tweet
     {
-        public int ID { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         [StringLength(140)]
         public string Text { get; set; }
