@@ -1,9 +1,10 @@
 "use strict";
 var Tweet = (function () {
-    function Tweet(ID, user, timeWhenTweeted, text, hashtags, comments) {
+    function Tweet(id, user, timeWhenTweeted, text, hashtags, comments) {
+        if (id === void 0) { id = Math.random(); }
         if (hashtags === void 0) { hashtags = []; }
         if (comments === void 0) { comments = []; }
-        this.ID = ID;
+        this.id = id;
         this.user = user;
         this.timeWhenTweeted = timeWhenTweeted;
         this.text = text;

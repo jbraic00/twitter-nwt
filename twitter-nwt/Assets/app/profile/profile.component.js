@@ -18,7 +18,7 @@ var ProfileComponent = (function () {
     ProfileComponent.prototype.getUsers = function () {
         var _this = this;
         this.userService.getUsers()
-            .subscribe(function (users) { _this.users = users; console.log("Users: ", _this.users); console.log("First user's username: ", _this.users[0]["Username"]); }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (users) { _this.users = users; console.log("Users: ", _this.users); console.log("First user's username: ", _this.users[0].username); }, function (error) { return _this.errorMessage = error; });
     };
     ProfileComponent = __decorate([
         core_1.Component({

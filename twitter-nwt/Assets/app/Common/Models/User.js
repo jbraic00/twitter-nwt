@@ -1,13 +1,13 @@
 "use strict";
 var User = (function () {
-    function User(ID, username, password, name, lastname, email, myTweets, favoritedTweets, followingUsers, followedBy, comments) {
-        if (ID === void 0) { ID = Math.random(); }
+    function User(id, username, password, name, lastname, email, myTweets, favoritedTweets, followingUsers, followedBy, comments) {
+        if (id === void 0) { id = Math.random(); }
         if (myTweets === void 0) { myTweets = []; }
         if (favoritedTweets === void 0) { favoritedTweets = []; }
         if (followingUsers === void 0) { followingUsers = []; }
         if (followedBy === void 0) { followedBy = []; }
         if (comments === void 0) { comments = []; }
-        this.ID = ID;
+        this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
