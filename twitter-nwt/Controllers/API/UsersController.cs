@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using twitter_nwt.Models.DTO;
 using twitter_nwt.Repositories;
 
 namespace twitter_nwt.Controllers.API
@@ -26,6 +27,21 @@ namespace twitter_nwt.Controllers.API
             {
                 var users = _userRepository.GetAllUsers();
                 return Ok(users);
+            }
+            catch (Exception e)
+            {
+                return BadRequest("Error has occured. Exception: " + e.Message);
+            }
+        }
+
+        [Route("update")]
+        [HttpPut]
+        public IHttpActionResult UpdateUser(UpdateUserDTO updatedUser)
+        {
+            try
+            {
+                var user = _userRepository.UpdateUser(updatedUser);
+                return Ok(user);
             }
             catch (Exception e)
             {

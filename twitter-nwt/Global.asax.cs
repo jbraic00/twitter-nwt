@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using twitter_nwt.App_Start.Mapping;
 
 namespace twitter_nwt
 {
@@ -16,6 +17,7 @@ namespace twitter_nwt
         {
             Database.SetInitializer(new DAL.TwitterInitializer());
 
+            AutoMapperConfig.Configure();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

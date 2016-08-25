@@ -1,0 +1,3 @@
+﻿<h3>My profile</h3>
+
+<input #newUsername *ngIf="firstUser" [(ngModel)]="firstUser.username" (keyup.enter)="updateUser(newUsername.value)"/>

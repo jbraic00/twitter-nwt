@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
 var UserService_1 = require('./../Common/Services/UserService');
 var ProfileComponent = (function () {
     function ProfileComponent(userService) {
@@ -18,13 +19,32 @@ var ProfileComponent = (function () {
     ProfileComponent.prototype.getUsers = function () {
         var _this = this;
         this.userService.getUsers()
-            .subscribe(function (users) { _this.users = users; console.log("Users: ", _this.users); console.log("First user's username: ", _this.users[0].username); }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (users) { _this.users = users; console.log("Users: ", _this.users); console.log("First user's username: ", _this.users[0].username); _this.firstUser = _this.users[0]; }, function (error) { return _this.errorMessage = error; });
+    };
+    ProfileComponent.prototype.updateUser = function (updatedUsername) {
+        var _this = this;
+        if (!updatedUsername) {
+            return;
+        }
+        console.log(updatedUsername);
+        this.updatedUser = {
+            id: this.firstUser.id,
+            username: updatedUsername,
+            password: this.firstUser.password,
+            name: this.firstUser.name,
+            lastname: this.firstUser.lastname,
+            email: this.firstUser.email
+        };
+        this.userService.updateUser(this.updatedUser)
+            .subscribe(function (user) { _this.firstUser = user; console.log("Updated user data: ", _this.firstUser); }, function (error) { return _this.errorMessage = error; });
     };
     ProfileComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'my-profile',
-            template: '<h3>My profile</h3>',
-            providers: [UserService_1.UserService]
+            templateUrl: 'profile.template.html',
+            providers: [UserService_1.UserService],
+            directives: [common_1.FORM_DIRECTIVES]
         }), 
         __metadata('design:paramtypes', [UserService_1.UserService])
     ], ProfileComponent);

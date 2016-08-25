@@ -10,7 +10,8 @@ namespace twitter_nwt.Models
 {
     public class Hashtag
     {
-        public int ID { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         [RegularExpression(@"(?:^|\s)\s*(#[A-Za-z][A-Za-z0-9-_]+)")]
         //[RegularExpression(@"(?<=\s|^)#(\w*[A-Za-z_]+\w*)")]

@@ -20,6 +20,24 @@ var UserService = (function () {
             .map(this.extractData)
             .catch(this.handleError);
     };
+    UserService.prototype.updateUser = function (user) {
+        var updatedUser = {
+            Id: user.id,
+            Username: user.username,
+            Password: user.password,
+            Name: user.name,
+            Lastname: user.lastname,
+            Email: user.email
+        };
+        var body = JSON.stringify(updatedUser);
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        console.log("In update user!");
+        console.log(body);
+        return this.http.put('api/users/update', body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     UserService.prototype.extractData = function (res) {
         var body = res.json();
         console.log("Extract data: ", body);
