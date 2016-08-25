@@ -6,11 +6,7 @@ import { Tweet } from './../Common/Models/Tweet';
 @Component({
     selector: 'tweets-list',
     template: `<h3>Tweets list:</h3>
-                <ul>
-                  <li *ngFor="let tweet of tweets">
-                    {{tweet.Text}}
-                  </li>
-                </ul>
+                <div *ngFor="let tweet of tweets">{{tweet.text}}</div>
               `,
     providers: [TweetService]
 })
@@ -18,13 +14,12 @@ import { Tweet } from './../Common/Models/Tweet';
 export class TweetsListComponent implements OnInit {
     errorMessage: any;
     tweets: Tweet[];
-
     constructor(private tweetService: TweetService) { }
 
     getTweets() {
         this.tweetService.getTweets()
             .subscribe(
-            tweets => { this.tweets = tweets; console.log(this.tweets) },
+            tweets => { this.tweets = tweets; console.log(this.tweets); console.log(this.tweets[0].text); },
             error => this.errorMessage = <any>error
             );
     } 

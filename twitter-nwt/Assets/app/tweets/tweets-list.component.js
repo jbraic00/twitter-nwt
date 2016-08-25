@@ -17,7 +17,7 @@ var TweetsListComponent = (function () {
     TweetsListComponent.prototype.getTweets = function () {
         var _this = this;
         this.tweetService.getTweets()
-            .subscribe(function (tweets) { _this.tweets = tweets; console.log(_this.tweets); }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (tweets) { _this.tweets = tweets; console.log(_this.tweets); console.log(_this.tweets[0].text); }, function (error) { return _this.errorMessage = error; });
     };
     TweetsListComponent.prototype.ngOnInit = function () {
         this.getTweets();
@@ -25,7 +25,7 @@ var TweetsListComponent = (function () {
     TweetsListComponent = __decorate([
         core_1.Component({
             selector: 'tweets-list',
-            template: "<h3>Tweets list:</h3>\n                <ul>\n                  <li *ngFor=\"let tweet of tweets\">\n                    {{tweet.Text}}\n                  </li>\n                </ul>\n              ",
+            template: "<h3>Tweets list:</h3>\n                <div *ngFor=\"let tweet of tweets\">{{tweet.text}}</div>\n              ",
             providers: [TweetService_1.TweetService]
         }), 
         __metadata('design:paramtypes', [TweetService_1.TweetService])
