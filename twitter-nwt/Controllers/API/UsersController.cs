@@ -49,6 +49,21 @@ namespace twitter_nwt.Controllers.API
             }
         }
 
+        [Route("search/{query}")]
+        [HttpGet]
+        public IHttpActionResult SearchUsers(string query)
+        {
+            try
+            {
+                var users = _userRepository.SearchUsers(query);
+                return Ok(users);
+            }
+            catch (Exception e)
+            {
+                return BadRequest("Error has occured. Exception: " + e.Message);
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
