@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
     users: User[];
     firstUser: User;
     updatedUser: any;
+    editing: boolean = false;
 
     constructor(private userService: UserService) { }
 
@@ -31,12 +32,12 @@ export class ProfileComponent implements OnInit {
         );
     }
 
-    updateUser(updatedUsername: string) {
-        if (!updatedUsername) { return; }
-        console.log(updatedUsername);
+    updateUser() {
+        this.editing = false;
+
         this.updatedUser = {
             id: this.firstUser.id,
-            username: updatedUsername,
+            username: this.firstUser.username,
             password: this.firstUser.password,
             name: this.firstUser.name,
             lastname: this.firstUser.lastname,
