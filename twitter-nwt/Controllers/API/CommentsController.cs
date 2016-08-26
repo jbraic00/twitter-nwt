@@ -33,5 +33,10 @@ namespace twitter_nwt.Controllers.API
                 return BadRequest("Error has occured. Exception: " + e.Message);
             }
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+        }
     }
 }
