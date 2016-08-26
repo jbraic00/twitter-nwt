@@ -1,6 +1,6 @@
-﻿import {User} from "./User"
-import {Hashtag} from "./Hashtag"
-import {Comment} from "./Comment"
+﻿import { User } from "./User";
+import { Hashtag } from "./Hashtag";
+import { Comment } from "./Comment";
 
 export class Tweet {
     public id: number;
