@@ -10,7 +10,8 @@ import { UserService } from './../Common/Services/UserService';
     selector: 'my-profile',
     templateUrl: 'profile.template.html',
     providers: [UserService],
-    directives: [FORM_DIRECTIVES]
+    directives: [FORM_DIRECTIVES],
+    styleUrls: ['./../../../../Content/forms.css']
 })
 
 export class ProfileComponent implements OnInit {

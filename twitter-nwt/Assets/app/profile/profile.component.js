@@ -42,7 +42,8 @@ var ProfileComponent = (function () {
             selector: 'my-profile',
             templateUrl: 'profile.template.html',
             providers: [UserService_1.UserService],
-            directives: [common_1.FORM_DIRECTIVES]
+            directives: [common_1.FORM_DIRECTIVES],
+            styleUrls: ['./../../../../Content/forms.css']
         }), 
         __metadata('design:paramtypes', [UserService_1.UserService])
     ], ProfileComponent);
