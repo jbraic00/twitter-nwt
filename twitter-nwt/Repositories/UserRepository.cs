@@ -63,5 +63,32 @@ namespace twitter_nwt.Repositories
                 }
             }
         }
+
+        public IList<User> SearchUsers(string query)
+        {
+            using (var context = new TwitterContext())
+            {
+                try
+                {
+                    var users = context.Users
+                        .Include("MyTweets")
+                        .Include("FavoritedTweets")
+                        .Include("FollowingUsers")
+                        .Include("FollowedBy")
+                        .Include("Comments")
+                        .Where(x => x.Username.Contains(query))
+                        .ToList();
+                    if (users.Count == 0)
+                    {
+                        throw new NullReferenceException("Error when searching for users!");
+                    }
+                    return users;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Searching for users' list is null. Exception: " + e.Message);
+                }
+            }
+        }
     }
 }
