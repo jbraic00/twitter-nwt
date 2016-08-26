@@ -14,6 +14,7 @@ var UserService_1 = require('./../Common/Services/UserService');
 var ProfileComponent = (function () {
     function ProfileComponent(userService) {
         this.userService = userService;
+        this.editing = false;
     }
     ProfileComponent.prototype.ngOnInit = function () { this.getUsers(); };
     ProfileComponent.prototype.getUsers = function () {
@@ -21,15 +22,12 @@ var ProfileComponent = (function () {
         this.userService.getUsers()
             .subscribe(function (users) { _this.users = users; console.log("Users: ", _this.users); console.log("First user's username: ", _this.users[0].username); _this.firstUser = _this.users[0]; }, function (error) { return _this.errorMessage = error; });
     };
-    ProfileComponent.prototype.updateUser = function (updatedUsername) {
+    ProfileComponent.prototype.updateUser = function () {
         var _this = this;
-        if (!updatedUsername) {
-            return;
-        }
-        console.log(updatedUsername);
+        this.editing = false;
         this.updatedUser = {
             id: this.firstUser.id,
-            username: updatedUsername,
+            username: this.firstUser.username,
             password: this.firstUser.password,
             name: this.firstUser.name,
             lastname: this.firstUser.lastname,
