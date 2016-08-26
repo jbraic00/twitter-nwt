@@ -1,6 +1,11 @@
 "use strict";
 var Hashtag = (function () {
-    function Hashtag() {
+    function Hashtag(id, text, tweets) {
+        if (id === void 0) { id = Math.random(); }
+        if (tweets === void 0) { tweets = []; }
+        this.id = id;
+        this.text = text;
+        this.tweets = tweets;
     }
     return Hashtag;
 }());
