@@ -19,6 +19,6 @@ namespace twitter_nwt.Models
 
         [JsonIgnore]
         [InverseProperty("Hashtags")]
-        public virtual ICollection<Tweet> Tweets { get; set; }
+        public ICollection<Tweet> Tweets { get; set; }
     }
 }

@@ -24,6 +24,11 @@
             <div class="col-xs-9 pull-left">{{firstUser.email}}</div>
         </div>
 
+        <div class="row" *ngFor="let tweet of firstUser.myTweets">
+            <div class="col-xs-3">Tweet</div>
+            <div class="xol-xs-9 pull-left">{{tweet.text}}</div>
+        </div>
+
         <br />
         <button class="btn btn-default" (click)="editing = true">Edit</button>
     </div>

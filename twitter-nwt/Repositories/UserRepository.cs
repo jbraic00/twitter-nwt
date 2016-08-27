@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Web;
 using twitter_nwt.DAL;
 using twitter_nwt.Models;
@@ -16,7 +17,7 @@ namespace twitter_nwt.Repositories
             {
                 try
                 {
-                    var users = context.Users.ToList();
+                    var users = context.Users.Include(x => x.MyTweets).ToList();
                     if (users.Count == 0)
                     {
                         throw new NullReferenceException("Error when getting all users!");
@@ -78,15 +79,11 @@ namespace twitter_nwt.Repositories
                         .Include("Comments")
                         .Where(x => x.Username.Contains(query))
                         .ToList();
-                    if (users.Count == 0)
-                    {
-                        throw new NullReferenceException("Error when searching for users!");
-                    }
                     return users;
                 }
                 catch (Exception e)
                 {
-                    throw new Exception("Searching for users' list is null. Exception: " + e.Message);
+                    throw new Exception("Error when searching for users. Exception: " + e.Message);
                 }
             }
         }
