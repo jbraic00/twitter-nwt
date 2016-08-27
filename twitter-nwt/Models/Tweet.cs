@@ -20,17 +20,17 @@ namespace twitter_nwt.Models
         public DateTime TimeWhenTweeted { get; set; }
 
         [JsonIgnore]
-        public virtual User User { get; set; }
+        public User User { get; set; }
 
         [InverseProperty("FavoritedTweets")]
         [JsonIgnore]
-        public virtual ICollection<User> UsersThatFavorited { get; set; }
+        public ICollection<User> UsersThatFavorited { get; set; }
 
         [InverseProperty("Tweets")]
         [JsonIgnore]
-        public virtual ICollection<Hashtag> Hashtags { get; set; }
+        public ICollection<Hashtag> Hashtags { get; set; }
 
         [JsonIgnore]
-        public virtual ICollection<Comment> Comments { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }

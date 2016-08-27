@@ -27,20 +27,20 @@ namespace twitter_nwt.Models
         public string Email { get; set; }
 
         [InverseProperty("User")]
-        [JsonIgnore]
-        public virtual ICollection<Tweet> MyTweets { get; set; }
+        //[JsonIgnore]
+        public ICollection<Tweet> MyTweets { get; set; }
 
         [InverseProperty("UsersThatFavorited")]
         [JsonIgnore]
-        public virtual ICollection<Tweet> FavoritedTweets { get; set; }
+        public ICollection<Tweet> FavoritedTweets { get; set; }
 
         [JsonIgnore]
-        public virtual ICollection<User> FollowingUsers { get; set; }
+        public ICollection<User> FollowingUsers { get; set; }
 
         [JsonIgnore]
-        public virtual ICollection<User> FollowedBy { get; set; }
+        public ICollection<User> FollowedBy { get; set; }
 
         [JsonIgnore]
-        public virtual ICollection<Comment> Comments { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }

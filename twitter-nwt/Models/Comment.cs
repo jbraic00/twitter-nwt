@@ -15,9 +15,9 @@ namespace twitter_nwt.Models
         public string Text { get; set; }
 
         [JsonIgnore]
-        public virtual User User { get; set; }
+        public User User { get; set; }
 
         [JsonIgnore]
-        public virtual Tweet Tweet { get; set; }
+        public Tweet Tweet { get; set; }
     }
 }
