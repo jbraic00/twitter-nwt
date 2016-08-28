@@ -87,5 +87,50 @@ namespace twitter_nwt.Repositories
                 }
             }
         }
+
+        public User AddUser(AddUserDTO newUser)
+        {
+            using (var context = new TwitterContext())
+            {
+                try
+                {
+                    User user = new User();
+                    user.Id = GetNumberOfUsers() + 1;
+                    user.Username = newUser.Username;
+                    user.Password = newUser.Password;
+                    user.Name = newUser.Name;
+                    user.Lastname = newUser.Lastname;
+                    user.Email = newUser.Email;
+
+                    context.Users.Add(user);
+                    context.SaveChanges();
+                    return user;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Could not add new user. Exception: " + e.Message);
+                }
+            }
+        }
+
+        public int GetNumberOfUsers()
+        {
+            using (var context = new TwitterContext())
+            {
+                try
+                {
+                    var users = context.Users.ToList();
+                    if (users.Count == 0)
+                    {
+                        throw new NullReferenceException("Error when getting all users!");
+                    }
+                    return users.Count;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("All users' list is null. Exception: " + e.Message);
+                }
+            }
+        }
     }
 }

@@ -1,0 +1,36 @@
+﻿<h2>New user:</h2>
+
+<form (ngSubmit)="register()" #userRegistrationForm="ngForm">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" required [(ngModel)]="newUser.username" name="username" />
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="text" class="form-control" id="password" required [(ngModel)]="newUser.password" name="password" />
+    </div>
+
+    <div class="form-group">
+        <label for="reenteredPassword">Re-enter Password</label>
+        <input type="text" class="form-control" id="reenteredPassword" required [(ngModel)]="password" name="reenteredPassword" />
+    </div>
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required [(ngModel)]="newUser.name" name="name" />
+    </div>
+
+    <div class="form-group">
+        <label for="lastname">Lastname</label>
+        <input type="text" class="form-control" id="lastname" required [(ngModel)]="newUser.lastname" name="lastname" />
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" required [(ngModel)]="newUser.email" name="email" />
+    </div>
+
+    <!--<button class="btn btn-default" (click)="editing = false">Cancel</button>-->
+    <button type="submit" class="btn btn-default" [disabled]="!userRegistrationForm.form.valid || newUser.password != password">Register</button>
+</form>

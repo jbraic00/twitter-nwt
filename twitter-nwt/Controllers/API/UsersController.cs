@@ -64,6 +64,21 @@ namespace twitter_nwt.Controllers.API
             }
         }
 
+        [Route("add")]
+        [HttpPost]
+        public IHttpActionResult AddUser(AddUserDTO newUser)
+        {
+            try
+            {
+                var user = _userRepository.AddUser(newUser);
+                return Ok(user);
+            }
+            catch (Exception e)
+            {
+                return BadRequest("Error has occured. Exception: " + e.Message);
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);

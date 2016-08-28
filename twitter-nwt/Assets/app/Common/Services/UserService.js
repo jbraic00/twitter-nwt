@@ -32,9 +32,27 @@ var UserService = (function () {
         var body = JSON.stringify(updatedUser);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        console.log("In update user!");
+        console.log("In updateUser()!");
         console.log(body);
         return this.http.put('api/users/update', body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    UserService.prototype.addUser = function (user) {
+        var newUser = {
+            Id: user.id,
+            Username: user.username,
+            Password: user.password,
+            Name: user.name,
+            Lastname: user.lastname,
+            Email: user.email
+        };
+        var body = JSON.stringify(newUser);
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        console.log("In addUser()!");
+        console.log(body);
+        return this.http.post('api/users/add', body, options)
             .map(this.extractData)
             .catch(this.handleError);
     };

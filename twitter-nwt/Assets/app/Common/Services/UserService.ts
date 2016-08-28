@@ -26,9 +26,28 @@ export class UserService {
         let body = JSON.stringify(updatedUser);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        console.log("In update user!");
+        console.log("In updateUser()!");
         console.log(body);
         return this.http.put('api/users/update', body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    addUser(user: User): Observable<User> {
+        let newUser = {
+            Id: user.id,
+            Username: user.username,
+            Password: user.password,
+            Name: user.name,
+            Lastname: user.lastname,
+            Email: user.email
+        };
+        let body = JSON.stringify(newUser);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        console.log("In addUser()!");
+        console.log(body);
+        return this.http.post('api/users/add', body, options)
             .map(this.extractData)
             .catch(this.handleError);
     }

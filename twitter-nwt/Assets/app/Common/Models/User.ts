@@ -14,7 +14,7 @@ export class User {
     public followedBy: User[];
     public comments: Comment[];
 
-    constructor(id: number = Math.random(), username: string, password: string, name: string, lastname: string, email: string, myTweets: Tweet[] = [], favoritedTweets: Tweet[] = [], followingUsers: User[] = [], followedBy: User[] = [], comments: Comment[] = []) {
+    constructor(id: number = Math.random(), username: string = "", password: string = "", name: string = "", lastname: string = "", email: string = "", myTweets: Tweet[] = [], favoritedTweets: Tweet[] = [], followingUsers: User[] = [], followedBy: User[] = [], comments: Comment[] = []) {
         this.id = id;
         this.username = username;
         this.password = password;
