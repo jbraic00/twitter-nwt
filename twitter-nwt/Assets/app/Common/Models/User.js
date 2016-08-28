@@ -1,7 +1,7 @@
 "use strict";
 var User = (function () {
     function User(id, username, password, name, lastname, email, myTweets, favoritedTweets, followingUsers, followedBy, comments) {
-        if (id === void 0) { id = Math.random(); }
+        if (id === void 0) { id = 1; }
         if (username === void 0) { username = ""; }
         if (password === void 0) { password = ""; }
         if (name === void 0) { name = ""; }
