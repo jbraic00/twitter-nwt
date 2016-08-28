@@ -1,7 +1,7 @@
 "use strict";
 var Tweet = (function () {
     function Tweet(id, user, timeWhenTweeted, text, hashtags, comments) {
-        if (id === void 0) { id = Math.random(); }
+        if (id === void 0) { id = 1; }
         if (hashtags === void 0) { hashtags = []; }
         if (comments === void 0) { comments = []; }
         this.id = id;

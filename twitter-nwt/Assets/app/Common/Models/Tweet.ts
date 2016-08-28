@@ -10,7 +10,7 @@ export class Tweet {
     public hashtags: Hashtag[];
     public comments: Comment[];
 
-    constructor(id: number = Math.random(), user: User, timeWhenTweeted: Date, text: string, hashtags: Hashtag[] = [], comments: Comment[] = []) {
+    constructor(id: number = 1, user: User, timeWhenTweeted: Date, text: string, hashtags: Hashtag[] = [], comments: Comment[] = []) {
         this.id = id;
         this.user = user;
         this.timeWhenTweeted = timeWhenTweeted;

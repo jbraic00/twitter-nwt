@@ -1,7 +1,7 @@
 "use strict";
 var Comment = (function () {
     function Comment(id, text, user, tweet) {
-        if (id === void 0) { id = Math.random(); }
+        if (id === void 0) { id = 1; }
         this.id = id;
         this.text = text;
         this.user = user;

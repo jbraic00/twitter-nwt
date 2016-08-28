@@ -1,7 +1,7 @@
 "use strict";
 var Hashtag = (function () {
     function Hashtag(id, text, tweets) {
-        if (id === void 0) { id = Math.random(); }
+        if (id === void 0) { id = 1; }
         if (tweets === void 0) { tweets = []; }
         this.id = id;
         this.text = text;
