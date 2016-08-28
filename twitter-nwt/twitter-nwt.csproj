@@ -269,6 +269,7 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Assets\app\profile\profile.template.html" />
+    <Content Include="Assets\app\user-registration\user-registration.template.html" />
     <Content Include="Assets\node_modules\%40angular\common\bundles\common.umd.js" />
     <Content Include="Assets\node_modules\%40angular\common\bundles\common.umd.min.js" />
     <Content Include="Assets\node_modules\%40angular\common\esm\index.js" />
@@ -5160,6 +5161,7 @@
     <TypeScriptCompile Include="Assets\app\profile\profile.component.ts" />
     <TypeScriptCompile Include="Assets\app\rxjs-operators.ts" />
     <TypeScriptCompile Include="Assets\app\tweets\tweets-list.component.ts" />
+    <TypeScriptCompile Include="Assets\app\user-registration\user-registration.component.ts" />
     <TypeScriptCompile Include="Assets\node_modules\%40angular\common\esm\index.d.ts" />
     <TypeScriptCompile Include="Assets\node_modules\%40angular\common\esm\src\common_directives.d.ts" />
     <TypeScriptCompile Include="Assets\node_modules\%40angular\common\esm\src\directives.d.ts" />
