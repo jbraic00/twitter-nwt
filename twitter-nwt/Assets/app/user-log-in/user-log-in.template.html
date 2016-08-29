@@ -1,0 +1,20 @@
+﻿<h2>Log in</h2>
+
+<form (ngSubmit)="logIn()" #userLogInForm="ngForm">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" required [(ngModel)]="username" name="username" />
+        <div [hidden]="!isUsernameInvalid">Invalid username</div>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="text" class="form-control" id="password" required [(ngModel)]="password" name="password" />
+        <div [hidden]="!isPasswordInvalid">Invalid password</div>
+    </div>
+    
+    <!--<button type="submit" class="btn btn-default" [disabled]="!userLogInForm.form.valid || isUsernameInvalid || isPasswordInvalid">Log In</button>-->
+    <button type="submit" class="btn btn-default">Log In</button>
+</form>
+
+<a class="btn btn-info" routerLink="/dashboard/user-registration" routerLinkActive="active">Register</a>

@@ -28,7 +28,6 @@ var TweetsListComponent = (function () {
             selector: 'tweets-list',
             templateUrl: 'tweets-list.template.html',
             styleUrls: ['./../../../../Content/tweets-list-style.css'],
-            providers: [TweetService_1.TweetService]
         }), 
         __metadata('design:paramtypes', [TweetService_1.TweetService])
     ], TweetsListComponent);
