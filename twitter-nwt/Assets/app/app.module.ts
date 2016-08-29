@@ -8,10 +8,14 @@ import { routing, appRoutingProviders } from './app.routing';
 
 import { DashboardModule } from './dashboard/dashboard.module';
 
+import { UserService } from './Common/Services/UserService';
+import { CommentService } from './Common/Services/CommentService';
+import { HashtagService } from './Common/Services/HashtagService';
+
 @NgModule({
     imports: [BrowserModule, HttpModule, FormsModule, routing, DashboardModule],
     declarations: [AppComponent],
-    providers: [appRoutingProviders],
+    providers: [appRoutingProviders, UserService, CommentService, HashtagService],
     bootstrap: [AppComponent]
 })
 

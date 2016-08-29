@@ -5152,6 +5152,8 @@
     <TypeScriptCompile Include="Assets\app\Common\Models\Hashtag.ts" />
     <TypeScriptCompile Include="Assets\app\Common\Models\Tweet.ts" />
     <TypeScriptCompile Include="Assets\app\Common\Models\User.ts" />
+    <TypeScriptCompile Include="Assets\app\Common\Services\CommentService.ts" />
+    <TypeScriptCompile Include="Assets\app\Common\Services\HashtagService.ts" />
     <TypeScriptCompile Include="Assets\app\Common\Services\TweetService.ts" />
     <TypeScriptCompile Include="Assets\app\Common\Services\UserService.ts" />
     <TypeScriptCompile Include="Assets\app\dashboard\dashboard.component.ts" />

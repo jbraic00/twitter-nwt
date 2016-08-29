@@ -28,7 +28,6 @@ var UserRegistrationComponent = (function () {
             moduleId: module.id,
             selector: 'user-registration-form',
             templateUrl: 'user-registration.template.html',
-            providers: [UserService_1.UserService],
             directives: [common_1.FORM_DIRECTIVES],
             styleUrls: ['./../../../../Content/forms.css']
         }), 
