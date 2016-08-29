@@ -2,12 +2,12 @@
 import { Observable }        from 'rxjs/Observable';
 import { TweetService } from './../Common/Services/TweetService';
 import { Tweet } from './../Common/Models/Tweet';
+import { User } from './../Common/Models/User';
 
 @Component({
+    moduleId: module.id,
     selector: 'tweets-list',
-    template: `<h3>Tweets list:</h3>
-                <div *ngFor="let tweet of tweets">{{tweet.text}}</div>
-              `,
+    templateUrl: 'tweets-list.template.html',
     providers: [TweetService]
 })
 
@@ -19,7 +19,7 @@ export class TweetsListComponent implements OnInit {
     getTweets() {
         this.tweetService.getTweets()
             .subscribe(
-            tweets => { this.tweets = tweets; console.log(this.tweets); console.log(this.tweets[0].text); },
+            tweets => { this.tweets = tweets; console.log(this.tweets); },
             error => this.errorMessage = <any>error
             );
     } 

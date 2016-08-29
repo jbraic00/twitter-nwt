@@ -19,7 +19,7 @@ export class User {
         this.username = username;
         this.password = password;
         this.name = name;
-        this.lastname = lastname;
+        this.lastname = lastname; 
         this.email = email;
         this.myTweets = myTweets;
         this.favoritedTweets = favoritedTweets;
