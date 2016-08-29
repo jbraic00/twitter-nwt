@@ -14,7 +14,13 @@ var observable_1 = require('rxjs/observable');
 var UserService = (function () {
     function UserService(http) {
         this.http = http;
+        this.getAllUsers();
     }
+    UserService.prototype.getAllUsers = function () {
+        var _this = this;
+        this.getUsers()
+            .subscribe(function (users) { _this.allUsers = users; console.log("Users in user service: ", _this.allUsers); _this.currentUser = _this.allUsers[0]; console.log("Current user: ", _this.currentUser); }, function (error) { return _this.errorMessage = error; });
+    };
     UserService.prototype.getUsers = function () {
         return this.http.get('api/users')
             .map(this.extractData)
@@ -66,6 +72,30 @@ var UserService = (function () {
             error.status ? error.status + " - " + error.statusText : 'Server error!';
         console.log(errMsg);
         return observable_1.Observable.throw(errMsg);
+    };
+    UserService.prototype.checkIfUsernameExists = function (username) {
+        for (var i = 0; i < this.allUsers.length; i++) {
+            if (this.allUsers[i].username == username) {
+                return true;
+            }
+        }
+        return false;
+    };
+    UserService.prototype.checkIfPasswordExists = function (password) {
+        for (var i = 0; i < this.allUsers.length; i++) {
+            if (this.allUsers[i].password == password) {
+                return true;
+            }
+        }
+        return false;
+    };
+    UserService.prototype.saveCurrentUser = function (username) {
+        for (var i = 0; i < this.allUsers.length; i++) {
+            if (this.allUsers[i].username == username) {
+                this.currentUser = this.allUsers[i];
+            }
+        }
+        console.log("Saved current user: ", this.currentUser);
     };
     UserService = __decorate([
         core_1.Injectable(), 

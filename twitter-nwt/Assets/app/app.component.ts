@@ -1,5 +1,7 @@
 ﻿import { Component } from '@angular/core';
 
+import { UserService } from './Common/Services/UserService';
+
 // Add the RxJS Observable operators we need in this app.
 //import './rxjs-operators';
 
@@ -8,4 +10,6 @@
     template: '<router-outlet></router-outlet>'
 })
 
-export class AppComponent { }
+export class AppComponent {
+    constructor(private userService: UserService) { }
+}

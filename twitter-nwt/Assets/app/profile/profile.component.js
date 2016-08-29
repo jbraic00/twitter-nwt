@@ -18,9 +18,9 @@ var ProfileComponent = (function () {
     }
     ProfileComponent.prototype.ngOnInit = function () { this.getUsers(); };
     ProfileComponent.prototype.getUsers = function () {
-        var _this = this;
-        this.userService.getUsers()
-            .subscribe(function (users) { _this.users = users; console.log("Users: ", _this.users); _this.firstUser = _this.users[0]; console.log(_this.firstUser.myTweets); }, function (error) { return _this.errorMessage = error; });
+        this.users = this.userService.allUsers;
+        this.firstUser = this.userService.currentUser;
+        console.log("In component: ", this.firstUser);
     };
     ProfileComponent.prototype.updateUser = function () {
         var _this = this;
