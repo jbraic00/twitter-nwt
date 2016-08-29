@@ -25,11 +25,14 @@ export class ProfileComponent implements OnInit {
     ngOnInit() { this.getUsers(); }
 
     getUsers() {
-        this.userService.getUsers()
-            .subscribe(
-            users => { this.users = users; console.log("Users: ", this.users); this.firstUser = this.users[0]; console.log(this.firstUser.myTweets); },
-            error => this.errorMessage = <any>error
-        );
+        //this.userService.getUsers()
+        //    .subscribe(
+        //    users => { this.users = users; console.log("Users: ", this.users); this.firstUser = this.users[0]; console.log(this.firstUser.myTweets); },
+        //    error => this.errorMessage = <any>error
+        //);
+        this.users = this.userService.allUsers;
+        this.firstUser = this.userService.currentUser;
+        console.log("In component: ", this.firstUser);
     }
 
     updateUser() {

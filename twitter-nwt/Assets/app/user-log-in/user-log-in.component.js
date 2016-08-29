@@ -11,31 +11,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var common_1 = require('@angular/common');
-var User_1 = require('./../Common/Models/User');
 var UserService_1 = require('./../Common/Services/UserService');
-var UserRegistrationComponent = (function () {
-    function UserRegistrationComponent(userService, router) {
+var UserLogInComponent = (function () {
+    function UserLogInComponent(userService, router) {
         this.userService = userService;
         this.router = router;
-        this.newUser = new User_1.User();
+        this.isUsernameInvalid = false;
+        this.isPasswordInvalid = false;
     }
-    UserRegistrationComponent.prototype.register = function () {
-        var _this = this;
-        console.log("Registering new user! New user: ", this.newUser);
-        this.userService.addUser(this.newUser)
-            .subscribe(function (user) { _this.newUser = user; console.log("Updated user data: ", _this.newUser); _this.router.navigate(['/dashboard/tweets-list']); }, function (error) { return _this.errorMessage = error; });
+    UserLogInComponent.prototype.logIn = function () {
+        if (!this.userService.checkIfUsernameExists(this.username)) {
+            this.isUsernameInvalid = true;
+        }
+        else if (!this.userService.checkIfPasswordExists(this.password)) {
+            this.isUsernameInvalid = false;
+            this.isPasswordInvalid = true;
+        }
+        else {
+            this.isPasswordInvalid = false;
+            this.userService.saveCurrentUser(this.username);
+            this.router.navigate(['/dashboard/tweets-list']);
+        }
     };
-    UserRegistrationComponent = __decorate([
+    UserLogInComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'user-registration-form',
-            templateUrl: 'user-registration.template.html',
+            selector: 'user-log-in-form',
+            templateUrl: 'user-log-in.template.html',
             directives: [common_1.FORM_DIRECTIVES],
             styleUrls: ['./../../../../Content/forms.css']
         }), 
         __metadata('design:paramtypes', [UserService_1.UserService, router_1.Router])
-    ], UserRegistrationComponent);
-    return UserRegistrationComponent;
+    ], UserLogInComponent);
+    return UserLogInComponent;
 }());
-exports.UserRegistrationComponent = UserRegistrationComponent;
-//# sourceMappingURL=user-registration.component.js.map
+exports.UserLogInComponent = UserLogInComponent;
+//# sourceMappingURL=user-log-in.component.js.map

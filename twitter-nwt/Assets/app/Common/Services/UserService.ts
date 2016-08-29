@@ -6,7 +6,19 @@ import { Observable } from 'rxjs/observable';
 
 @Injectable()
 export class UserService {
-    constructor(private http: Http) { }
+    allUsers: User[];
+    currentUser: User;
+    errorMessage: string;
+
+    constructor(private http: Http) { this.getAllUsers(); }
+
+    getAllUsers() {
+        this.getUsers()
+            .subscribe(
+            users => { this.allUsers = users; console.log("Users in user service: ", this.allUsers); this.currentUser = this.allUsers[0]; console.log("Current user: ", this.currentUser); },
+            error => this.errorMessage = <any>error
+            );
+    }
 
     getUsers(): Observable<User[]> {
         return this.http.get('api/users')
@@ -63,5 +75,32 @@ export class UserService {
             error.status ? `${error.status} - ${error.statusText}` : 'Server error!';
         console.log(errMsg);
         return Observable.throw(errMsg);
+    }
+
+    checkIfUsernameExists(username: string): boolean {
+        for (var i = 0; i < this.allUsers.length; i++) {
+            if (this.allUsers[i].username == username) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    checkIfPasswordExists(password: string): boolean {
+        for (var i = 0; i < this.allUsers.length; i++) {
+            if (this.allUsers[i].password == password) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    saveCurrentUser(username: string): void {
+        for (var i = 0; i < this.allUsers.length; i++) {
+            if (this.allUsers[i].username == username) {
+                this.currentUser = this.allUsers[i];
+            }
+        }
+        console.log("Saved current user: ", this.currentUser);
     }
 }
