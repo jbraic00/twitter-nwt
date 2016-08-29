@@ -1,9 +1,62 @@
-﻿<h2>New tweets:</h2>
-<div *ngFor="let tweet of tweets" class="panel panel-primary">
-    <div class="panel-heading">
-        <h4 class="panel-title">{{tweet.user.name}}&nbsp;{{tweet.user.lastname}}</h4>||<small>{{tweet.timeWhenTweeted | date:short}}</small>
-    </div>
-    <div class="panel-body">
-        {{tweet.text}} <span *ngFor="let hashtag of tweet.hashtags" style="color:deepskyblue">{{hashtag.text}}</span>
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Recent tweets
+                </div>
+                <div class="panel-body comments">
+                    <textarea class="form-control" placeholder="New tweet..." rows="5"></textarea>
+                    <br>
+                    <button type="button" class="btn btn-info pull-right">Publish</button>
+                    <div class="clearfix"></div>
+                    <hr>
+
+                    <ul class="media-list">
+                        <li *ngFor="let tweet of tweets" class="media">
+                            <div class="comment">
+                                <a href="#" class="pull-left">
+                                    <img src="http://lorempixel.com/60/60/animals/?sf5saf" alt="" class="img-circle">
+                                </a>
+                                <div class="media-body">
+                                    <strong class="text-success">{{tweet.user.name}}&nbsp;{{tweet.user.lastname}}</strong>
+                                    <span class="text-muted">
+                                        <small class="text-muted">{{tweet.timeWhenTweeted | date:short}}</small>
+                                    </span>
+                                    <span class="text-muted pull-right">
+                                        <small class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Comment</small>
+                                    </span>
+                                    <p>{{tweet.text}}</p>
+                                    <p *ngFor="let hashtag of tweet.hashtags" style="color:deepskyblue">{{hashtag.text}}</p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <ul class="media-list">
+                                <li *ngFor="let comment of tweet.comments" class="media">
+                                    <div class="comment">
+                                        <a href="#" class="pull-left">
+                                            <img src="http://lorempixel.com/60/60/animals/?Fsf6sf6" alt="" class="img-circle">
+                                        </a>
+                                        <div class="media-body">
+                                            <strong class="text-success">MrAwesome</strong>
+                                            <span class="text-muted">
+                                                <small class="text-muted">2 days ago</small>
+                                            </span>
+                                            <span class="text-muted pull-right">
+                                                <small class="btn btn-danger btn-xs"><i class="fa fa-times"></i> Remove</small>
+                                            </span>
+                                            <p>
+                                                {{comment.text}}
+                                            </p>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

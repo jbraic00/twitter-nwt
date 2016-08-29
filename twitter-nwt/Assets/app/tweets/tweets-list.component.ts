@@ -8,6 +8,7 @@ import { User } from './../Common/Models/User';
     moduleId: module.id,
     selector: 'tweets-list',
     templateUrl: 'tweets-list.template.html',
+    styleUrls: ['./../../../../Content/tweets-list-style.css'],
     providers: [TweetService]
 })
 
