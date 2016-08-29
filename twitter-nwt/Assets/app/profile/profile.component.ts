@@ -9,7 +9,6 @@ import { UserService } from './../Common/Services/UserService';
     moduleId: module.id,
     selector: 'my-profile',
     templateUrl: 'profile.template.html',
-    providers: [UserService],
     directives: [FORM_DIRECTIVES],
     styleUrls: ['./../../../../Content/forms.css']
 })
