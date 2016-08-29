@@ -30,7 +30,7 @@ namespace twitter_nwt.Models
         //[JsonIgnore]
         public ICollection<Hashtag> Hashtags { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         public ICollection<Comment> Comments { get; set; }
     }
 }

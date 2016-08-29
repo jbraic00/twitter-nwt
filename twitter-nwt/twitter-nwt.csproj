@@ -3059,6 +3059,7 @@
     <Content Include="Assets\node_modules\zone.js\dist\zone.min.js" />
     <Content Include="Assets\systemjs.config.js" />
     <Content Include="Content\forms.css" />
+    <Content Include="Content\tweets-list-style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

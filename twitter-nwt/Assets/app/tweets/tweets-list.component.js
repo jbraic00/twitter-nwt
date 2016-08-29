@@ -27,7 +27,7 @@ var TweetsListComponent = (function () {
             moduleId: module.id,
             selector: 'tweets-list',
             templateUrl: 'tweets-list.template.html',
-            providers: [TweetService_1.TweetService]
+            styleUrls: ['./../../../../Content/tweets-list-style.css'],
         }), 
         __metadata('design:paramtypes', [TweetService_1.TweetService])
     ], TweetsListComponent);

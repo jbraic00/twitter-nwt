@@ -8,7 +8,7 @@ import { User } from './../Common/Models/User';
     moduleId: module.id,
     selector: 'tweets-list',
     templateUrl: 'tweets-list.template.html',
-    providers: [TweetService]
+    styleUrls: ['./../../../../Content/tweets-list-style.css'],
 })
 
 export class TweetsListComponent implements OnInit {

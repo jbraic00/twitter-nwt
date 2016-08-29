@@ -16,7 +16,7 @@ namespace twitter_nwt.Repositories
             {
                 try
                 {
-                    var tweets = context.Tweets.Include(x => x.User).Include(x=>x.Hashtags).ToList();
+                    var tweets = context.Tweets.Include(x => x.User).Include(x => x.Hashtags).Include(x => x.Comments).ToList();
                     if (tweets.Count == 0)
                     {
                         throw new NullReferenceException("Error when getting all tweets!");

@@ -18,6 +18,7 @@ var dashboard_module_1 = require('./dashboard/dashboard.module');
 var UserService_1 = require('./Common/Services/UserService');
 var CommentService_1 = require('./Common/Services/CommentService');
 var HashtagService_1 = require('./Common/Services/HashtagService');
+var TweetService_1 = require('./Common/Services/TweetService');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -25,7 +26,7 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule, app_routing_1.routing, dashboard_module_1.DashboardModule],
             declarations: [app_component_1.AppComponent],
-            providers: [app_routing_1.appRoutingProviders, UserService_1.UserService, CommentService_1.CommentService, HashtagService_1.HashtagService],
+            providers: [app_routing_1.appRoutingProviders, UserService_1.UserService, CommentService_1.CommentService, HashtagService_1.HashtagService, TweetService_1.TweetService],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
