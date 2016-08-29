@@ -1,0 +1,9 @@
+﻿<h2>New tweets:</h2>
+<div *ngFor="let tweet of tweets" class="panel panel-primary">
+    <div class="panel-heading">
+        <h4 class="panel-title">{{tweet.user.name}}&nbsp;{{tweet.user.lastname}}</h4>||<small>{{tweet.timeWhenTweeted | date:short}}</small>
+    </div>
+    <div class="panel-body">
+        {{tweet.text}} <span *ngFor="let hashtag of tweet.hashtags" style="color:deepskyblue">{{hashtag.text}}</span>
+    </div>
+</div>

@@ -270,6 +270,7 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Assets\app\profile\profile.template.html" />
     <Content Include="Assets\app\user-log-in\user-log-in.template.html" />
+    <Content Include="Assets\app\tweets\tweets-list.template.html" />
     <Content Include="Assets\app\user-registration\user-registration.template.html" />
     <Content Include="Assets\node_modules\%40angular\common\bundles\common.umd.js" />
     <Content Include="Assets\node_modules\%40angular\common\bundles\common.umd.min.js" />

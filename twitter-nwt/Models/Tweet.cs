@@ -19,7 +19,7 @@ namespace twitter_nwt.Models
         [DataType(DataType.DateTime)]
         public DateTime TimeWhenTweeted { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         public User User { get; set; }
 
         [InverseProperty("FavoritedTweets")]
@@ -27,7 +27,7 @@ namespace twitter_nwt.Models
         public ICollection<User> UsersThatFavorited { get; set; }
 
         [InverseProperty("Tweets")]
-        [JsonIgnore]
+        //[JsonIgnore]
         public ICollection<Hashtag> Hashtags { get; set; }
 
         [JsonIgnore]
