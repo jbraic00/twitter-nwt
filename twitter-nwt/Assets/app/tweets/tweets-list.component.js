@@ -17,15 +17,16 @@ var TweetsListComponent = (function () {
     TweetsListComponent.prototype.getTweets = function () {
         var _this = this;
         this.tweetService.getTweets()
-            .subscribe(function (tweets) { _this.tweets = tweets; console.log(_this.tweets); console.log(_this.tweets[0].text); }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (tweets) { _this.tweets = tweets; console.log(_this.tweets); }, function (error) { return _this.errorMessage = error; });
     };
     TweetsListComponent.prototype.ngOnInit = function () {
         this.getTweets();
     };
     TweetsListComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'tweets-list',
-            template: "<h3>Tweets list:</h3>\n                <div *ngFor=\"let tweet of tweets\">{{tweet.text}}</div>\n              ",
+            templateUrl: 'tweets-list.template.html',
             providers: [TweetService_1.TweetService]
         }), 
         __metadata('design:paramtypes', [TweetService_1.TweetService])

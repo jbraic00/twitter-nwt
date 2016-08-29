@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Web;
 using twitter_nwt.DAL;
 using twitter_nwt.Models;
@@ -15,7 +16,7 @@ namespace twitter_nwt.Repositories
             {
                 try
                 {
-                    var tweets = context.Tweets.ToList();
+                    var tweets = context.Tweets.Include(x => x.User).Include(x=>x.Hashtags).ToList();
                     if (tweets.Count == 0)
                     {
                         throw new NullReferenceException("Error when getting all tweets!");
