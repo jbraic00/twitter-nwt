@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit {
         this.userService.updateUser(this.updatedUser)
             .subscribe(
             user => { this.firstUser = user; console.log("Updated user data: ", this.firstUser); },
-                error => this.errorMessage = <any>error
+            error => this.errorMessage = <any>error
             );
     }
 }

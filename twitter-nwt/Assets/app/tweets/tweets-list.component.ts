@@ -22,10 +22,10 @@ export class TweetsListComponent implements OnInit {
             tweets => { this.tweets = tweets; console.log(this.tweets); },
             error => this.errorMessage = <any>error
             );
-    } 
+    }
 
     ngOnInit(): void {
-        this.getTweets();        
+        this.getTweets();
     }
 
 }
