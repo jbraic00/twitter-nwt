@@ -19,7 +19,7 @@ var UserService = (function () {
     UserService.prototype.getAllUsers = function () {
         var _this = this;
         this.getUsers()
-            .subscribe(function (users) { _this.allUsers = users; console.log("Users in user service: ", _this.allUsers); _this.currentUser = _this.allUsers[0]; console.log("Current user: ", _this.currentUser); }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (users) { _this.allUsers = users; console.log("Users in user service: ", _this.allUsers); }, function (error) { return _this.errorMessage = error; });
     };
     UserService.prototype.getUsers = function () {
         return this.http.get('api/users')

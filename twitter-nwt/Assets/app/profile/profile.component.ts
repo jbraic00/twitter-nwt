@@ -16,8 +16,8 @@ import { UserService } from './../Common/Services/UserService';
 export class ProfileComponent implements OnInit {
     errorMessage: string;
     user: User;
+    password: string;
     updatedUser: any;
-    editing: boolean = false;
 
     constructor(private userService: UserService) { }
 
@@ -29,8 +29,6 @@ export class ProfileComponent implements OnInit {
     }
 
     updateUser() {
-        this.editing = false;
-
         this.updatedUser = {
             id: this.user.id,
             username: this.user.username,
