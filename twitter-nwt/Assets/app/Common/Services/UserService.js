@@ -16,19 +16,12 @@ var UserService = (function () {
         this.http = http;
         this.getUsers();
     }
-    UserService.prototype.getAllUsers = function () {
-        var _this = this;
-        this.getUsers()
-            .subscribe(function (users) { _this.allUsers = users; console.log("Users in user service: ", _this.allUsers); _this.currentUser = _this.allUsers[0]; console.log("Current user: ", _this.currentUser); }, function (error) { return _this.errorMessage = error; });
-    };
     UserService.prototype.getUsers = function () {
         var _this = this;
         return this.http.get('api/users')
             .map(this.extractData)
-            .subscribe(function (users) { _this.allUsers = users; console.log("Users in user service: ", _this.allUsers); _this.currentUser = _this.allUsers[0]; console.log("Current user: ", _this.currentUser); }, function (error) { return _this.errorMessage = error; });
-        try { }
-        catch ( = this.handleError) { }
-        ;
+            .subscribe(function (users) { _this.allUsers = users; console.log("Users in user service: ", _this.allUsers); _this.currentUser = _this.allUsers[0]; console.log("Current user: ", _this.currentUser); }, function (error) { return _this.errorMessage = error; })
+            .catch(this.handleError);
     };
     UserService.prototype.updateUser = function (user) {
         var updatedUser = {

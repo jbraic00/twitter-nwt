@@ -12,21 +12,13 @@ export class UserService {
 
     constructor(private http: Http) { this.getUsers(); }
 
-    getAllUsers() {
-        this.getUsers()
-            .subscribe(
-            users => { this.allUsers = users; console.log("Users in user service: ", this.allUsers); this.currentUser = this.allUsers[0]; console.log("Current user: ", this.currentUser); },
-            error => this.errorMessage = <any>error
-            );
-    }
-
     getUsers(): Observable<User[]> {
         return this.http.get('api/users')
             .map(this.extractData)
             .subscribe(
             users => { this.allUsers = users; console.log("Users in user service: ", this.allUsers); this.currentUser = this.allUsers[0]; console.log("Current user: ", this.currentUser); },
             error => this.errorMessage = <any>error
-            );
+            )
             .catch(this.handleError);
     }
 
