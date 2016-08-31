@@ -12,18 +12,18 @@ namespace twitter_nwt.DAL
     {
         protected override void Seed(TwitterContext context)
         {
-            var user1 = new User() { Id = 1, Username = "User1", Password = "Pass1", Name = "Name1", Lastname = "Lastname1", Email = "user1@a.b" };
-            var user2 = new User() { Id = 2, Username = "User2", Password = "Pass2", Name = "Name2", Lastname = "Lastname2", Email = "user2@a.b" };
-            var user3 = new User() { Id = 3, Username = "User3", Password = "Pass3", Name = "Name3", Lastname = "Lastname3", Email = "user3@a.b" };
+            var user1 = new User() { Id = 1, Username = "Joker", Password = "joker", Name = "Melvin", Lastname = "White", Email = "joker@d.c" };
+            var user2 = new User() { Id = 2, Username = "Harley", Password = "harley", Name = "Harley", Lastname = "Quinn", Email = "harley@d.c" };
+            var user3 = new User() { Id = 3, Username = "Aquaman", Password = "aquaman", Name = "Arthur", Lastname = "Curry", Email = "aqua@d.c" };
 
-            var tweet1 = new Tweet() { Id = 1, Text = "Tweet1", TimeWhenTweeted = DateTime.Now, User = user1 };
-            var tweet2 = new Tweet() { Id = 2, Text = "Tweet2", TimeWhenTweeted = DateTime.Now, User = user2 };
+            var tweet1 = new Tweet() { Id = 1, Text = "Had the best time evaa #craziness #friendship", TimeWhenTweeted = new DateTime(2016, 5, 31, 8, 0, 0), User = user1 };
+            var tweet2 = new Tweet() { Id = 2, Text = "Finally went somewhere! #craziness", TimeWhenTweeted = new DateTime(2016, 6, 1, 23, 0, 0), User = user2 };
 
-            var hashtag1 = new Hashtag() { Id = 1, Text = "#Hashtag1", Tweets = new List<Tweet>() { tweet1, tweet2 } };
-            var hashtag2 = new Hashtag() { Id = 2, Text = "#Hashtag2", Tweets = new List<Tweet>() { tweet1 } };
+            var hashtag1 = new Hashtag() { Id = 1, Text = "#craziness", Tweets = new List<Tweet>() { tweet1, tweet2 } };
+            var hashtag2 = new Hashtag() { Id = 2, Text = "#friendship", Tweets = new List<Tweet>() { tweet1 } };
 
-            var comment1 = new Comment() { Id = 1, Text = "Comment1", Tweet = tweet1, User = user1 };
-            var comment2 = new Comment() { Id = 2, Text = "Comment2", Tweet = tweet2, User = user2 };
+            var comment1 = new Comment() { Id = 1, Text = "Lucky you!", Tweet = tweet1, User = user1 };
+            var comment2 = new Comment() { Id = 2, Text = "Jealous...", Tweet = tweet2, User = user2 };
 
             user1.MyTweets = new List<Tweet>() { tweet1 };
             user1.FavoritedTweets = new List<Tweet>();

@@ -1,7 +1,31 @@
-﻿.ng-valid[required] {
+﻿/*.ng-valid[required] {
   border-left: 5px solid #42A948; /* green */
 }
 
 .ng-invalid {
   border-left: 5px solid #a94442; /* red */
+}*/
+
+div.member_signin {
+    text-align: center;
+}
+
+p.member {
+    font-size: 19px;
+    color: #888888;
+    margin-bottom: 20px;
+}
+
+button.login, a.login {
+    width: 100%;
+    text-transform: uppercase;
+}
+
+form.loginform div.input-group {
+    width: 100%;
+}
+
+form.loginform input[type="text"], form.loginform input[type="password"] {
+    color: #6C6C6C;
+    text-align: center;
 }
