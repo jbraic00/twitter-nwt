@@ -10,7 +10,7 @@ export class UserService {
     currentUser: User;
     errorMessage: string;
 
-    constructor(private http: Http) { this.getAllUsers(); }
+    constructor(private http: Http) { this.getUsers(); }
 
     getAllUsers() {
         this.getUsers()
@@ -23,6 +23,10 @@ export class UserService {
     getUsers(): Observable<User[]> {
         return this.http.get('api/users')
             .map(this.extractData)
+            .subscribe(
+            users => { this.allUsers = users; console.log("Users in user service: ", this.allUsers); this.currentUser = this.allUsers[0]; console.log("Current user: ", this.currentUser); },
+            error => this.errorMessage = <any>error
+            );
             .catch(this.handleError);
     }
 
@@ -96,11 +100,16 @@ export class UserService {
     }
 
     saveCurrentUser(username: string): void {
-        for (var i = 0; i < this.allUsers.length; i++) {
-            if (this.allUsers[i].username == username) {
-                this.currentUser = this.allUsers[i];
+        for (let user of this.allUsers) {
+            if (user.username == username) {
+                this.currentUser = user;
             }
         }
         console.log("Saved current user: ", this.currentUser);
+    }
+
+    registerUser(user: User): void {
+        this.currentUser = user;
+        this.allUsers.push(user);
     }
 }

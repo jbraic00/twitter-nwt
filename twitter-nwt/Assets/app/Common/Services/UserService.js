@@ -14,7 +14,7 @@ var observable_1 = require('rxjs/observable');
 var UserService = (function () {
     function UserService(http) {
         this.http = http;
-        this.getAllUsers();
+        this.getUsers();
     }
     UserService.prototype.getAllUsers = function () {
         var _this = this;
@@ -22,9 +22,13 @@ var UserService = (function () {
             .subscribe(function (users) { _this.allUsers = users; console.log("Users in user service: ", _this.allUsers); _this.currentUser = _this.allUsers[0]; console.log("Current user: ", _this.currentUser); }, function (error) { return _this.errorMessage = error; });
     };
     UserService.prototype.getUsers = function () {
+        var _this = this;
         return this.http.get('api/users')
             .map(this.extractData)
-            .catch(this.handleError);
+            .subscribe(function (users) { _this.allUsers = users; console.log("Users in user service: ", _this.allUsers); _this.currentUser = _this.allUsers[0]; console.log("Current user: ", _this.currentUser); }, function (error) { return _this.errorMessage = error; });
+        try { }
+        catch ( = this.handleError) { }
+        ;
     };
     UserService.prototype.updateUser = function (user) {
         var updatedUser = {
@@ -90,12 +94,17 @@ var UserService = (function () {
         return false;
     };
     UserService.prototype.saveCurrentUser = function (username) {
-        for (var i = 0; i < this.allUsers.length; i++) {
-            if (this.allUsers[i].username == username) {
-                this.currentUser = this.allUsers[i];
+        for (var _i = 0, _a = this.allUsers; _i < _a.length; _i++) {
+            var user = _a[_i];
+            if (user.username == username) {
+                this.currentUser = user;
             }
         }
         console.log("Saved current user: ", this.currentUser);
+    };
+    UserService.prototype.registerUser = function (user) {
+        this.currentUser = user;
+        this.allUsers.push(user);
     };
     UserService = __decorate([
         core_1.Injectable(), 

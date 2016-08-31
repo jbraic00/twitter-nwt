@@ -16,25 +16,24 @@ var ProfileComponent = (function () {
         this.userService = userService;
         this.editing = false;
     }
-    ProfileComponent.prototype.ngOnInit = function () { this.getUsers(); };
-    ProfileComponent.prototype.getUsers = function () {
-        this.users = this.userService.allUsers;
-        this.firstUser = this.userService.currentUser;
-        console.log("In component: ", this.firstUser);
+    ProfileComponent.prototype.ngOnInit = function () { this.getUser(); };
+    ProfileComponent.prototype.getUser = function () {
+        this.user = this.userService.currentUser;
+        console.log("In component: ", this.user);
     };
     ProfileComponent.prototype.updateUser = function () {
         var _this = this;
         this.editing = false;
         this.updatedUser = {
-            id: this.firstUser.id,
-            username: this.firstUser.username,
-            password: this.firstUser.password,
-            name: this.firstUser.name,
-            lastname: this.firstUser.lastname,
-            email: this.firstUser.email
+            id: this.user.id,
+            username: this.user.username,
+            password: this.user.password,
+            name: this.user.name,
+            lastname: this.user.lastname,
+            email: this.user.email
         };
         this.userService.updateUser(this.updatedUser)
-            .subscribe(function (user) { _this.firstUser = user; console.log("Updated user data: ", _this.firstUser); }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (user) { _this.user = user; console.log("Updated user data: ", _this.user); }, function (error) { return _this.errorMessage = error; });
     };
     ProfileComponent = __decorate([
         core_1.Component({
