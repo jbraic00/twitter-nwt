@@ -4,13 +4,13 @@
     <div class="form-group">
         <label for="username">Username</label>
         <input type="text" class="form-control" id="username" required [(ngModel)]="username" name="username" />
-        <div [hidden]="!isUsernameInvalid">Invalid username</div>
+        <div class="alert alert-danger" [hidden]="!isUsernameInvalid">Invalid username!</div>
     </div>
 
     <div class="form-group">
         <label for="password">Password</label>
         <input type="text" class="form-control" id="password" required [(ngModel)]="password" name="password" />
-        <div [hidden]="!isPasswordInvalid">Invalid password</div>
+        <div class="alert alert-danger" [hidden]="!isPasswordInvalid">Invalid password!</div>
     </div>
     
     <!--<button type="submit" class="btn btn-default" [disabled]="!userLogInForm.form.valid || isUsernameInvalid || isPasswordInvalid">Log In</button>-->

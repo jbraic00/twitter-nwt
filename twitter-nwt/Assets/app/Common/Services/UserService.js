@@ -14,7 +14,7 @@ var observable_1 = require('rxjs/observable');
 var UserService = (function () {
     function UserService(http) {
         this.http = http;
-        this.getUsers();
+        this.getAllUsers();
     }
     UserService.prototype.getAllUsers = function () {
         var _this = this;
@@ -22,13 +22,9 @@ var UserService = (function () {
             .subscribe(function (users) { _this.allUsers = users; console.log("Users in user service: ", _this.allUsers); _this.currentUser = _this.allUsers[0]; console.log("Current user: ", _this.currentUser); }, function (error) { return _this.errorMessage = error; });
     };
     UserService.prototype.getUsers = function () {
-        var _this = this;
         return this.http.get('api/users')
             .map(this.extractData)
-            .subscribe(function (users) { _this.allUsers = users; console.log("Users in user service: ", _this.allUsers); _this.currentUser = _this.allUsers[0]; console.log("Current user: ", _this.currentUser); }, function (error) { return _this.errorMessage = error; });
-        try { }
-        catch ( = this.handleError) { }
-        ;
+            .catch(this.handleError);
     };
     UserService.prototype.updateUser = function (user) {
         var updatedUser = {

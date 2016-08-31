@@ -10,9 +10,9 @@ export class UserService {
     currentUser: User;
     errorMessage: string;
 
-    constructor(private http: Http) { this.getUsers(); }
+    constructor(private http: Http) { this.getAllUsers(); }
 
-    getAllUsers() {
+    getAllUsers(): void {
         this.getUsers()
             .subscribe(
             users => { this.allUsers = users; console.log("Users in user service: ", this.allUsers); this.currentUser = this.allUsers[0]; console.log("Current user: ", this.currentUser); },
@@ -23,10 +23,6 @@ export class UserService {
     getUsers(): Observable<User[]> {
         return this.http.get('api/users')
             .map(this.extractData)
-            .subscribe(
-            users => { this.allUsers = users; console.log("Users in user service: ", this.allUsers); this.currentUser = this.allUsers[0]; console.log("Current user: ", this.currentUser); },
-            error => this.errorMessage = <any>error
-            );
             .catch(this.handleError);
     }
 

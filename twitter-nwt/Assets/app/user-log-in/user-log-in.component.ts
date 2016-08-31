@@ -35,7 +35,5 @@ export class UserLogInComponent {
             this.userService.saveCurrentUser(this.username);
             this.router.navigate(['/dashboard/tweets-list']);
         }
-        //this.isUsernameInvalid = false;
-        //this.isPasswordInvalid = false;
     }
 }
