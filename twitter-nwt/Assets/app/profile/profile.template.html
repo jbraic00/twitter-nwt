@@ -1,65 +1,79 @@
-﻿<!--<input #newUsername *ngIf="firstUser" [(ngModel)]="firstUser.username" (keyup.enter)="updateUser(newUsername.value)"/>-->
+﻿<div class="container" style="padding-top: 60px;">
+    <h1 class="page-header">Edit profile</h1>
 
-<div class="container" *ngIf="user">
-    <div [hidden]="editing">
-        <h1>My profile:</h1>
-
-        <div class="row">
-            <div class="col-xs-3">Username</div>
-            <div class="col-xs-9 pull-left">{{user.username}}</div>
+    <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="row text-center">
+                <img src="http://api.randomuser.me/portraits/women/21.jpg" class="avatar img-circle img-thumbnail" alt="avatar">
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 text-center">
+                    <h2><strong>{{user.followedBy.length}}</strong></h2>
+                    <p style="color: #8899a6"><small>Followers</small></p>
+                </div>
+                <div class="col-xs-12 col-sm-4 text-center">
+                    <h2><strong>{{user.followingUsers.length}}</strong></h2>
+                    <p style="color: #8899a6"><small>Following</small></p>
+                </div>
+                <div class="col-xs-12 col-sm-4 text-center">
+                    <h2><strong>{{user.myTweets.length}}</strong></h2>
+                    <p style="color: #8899a6"><small>Tweets</small></p>
+                </div>
+            </div>
         </div>
 
-        <div class="row">
-            <div class="col-xs-3">Name</div>
-            <div class="col-xs-9 pull-left">{{user.name}}</div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-3">Lastname</div>
-            <div class="col-xs-9 pull-left">{{user.lastname}}</div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-3">Email</div>
-            <div class="col-xs-9 pull-left">{{user.email}}</div>
-        </div>
-
-        <div class="row" *ngFor="let tweet of user.myTweets">
-            <div class="col-xs-3">Tweet</div>
-            <div class="xol-xs-9 pull-left">{{tweet.text}}</div>
-        </div>
-
-        <br />
-        <button class="btn btn-default" (click)="editing = true">Edit</button>
-    </div>
-
-    <div [hidden]="!editing">
-        <h2>Editing your profile:</h2>
-
-        <form (ngSubmit)="updateUser()" #userForm="ngForm">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" required [(ngModel)]="user.username" name="username" />
-                <!--<div [hidden]="username.valid || username.pristine">Username is required</div>-->
+        <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+            <div class="alert alert-info">
+                Here you can see and edit your profile information.
             </div>
 
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" required [(ngModel)]="user.name" name="name"/>
-            </div>
+            <h3>Personal info</h3>
 
-            <div class="form-group">
-                <label for="lastname">Lastname</label>
-                <input type="text" class="form-control" id="lastname" required [(ngModel)]="user.lastname" name="lastname"/>
-            </div>
+            <form class="form-horizontal" role="form" (ngSubmit)="updateUser()">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" for="name">Name:</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" id="name" required [(ngModel)]="user.name" name="name" />
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" required [(ngModel)]="user.email" name="email"/>
-            </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" for="lastname">Lastname:</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" id="lastname" required [(ngModel)]="user.lastname" name="lastname" />
+                    </div>
+                </div>
 
-            <button class="btn btn-default" (click)="editing = false">Cancel</button>
-            <button type="submit" class="btn btn-default" [disabled]="!userForm.form.valid">Save</button>
-        </form>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" for="email">Email:</label>
+                    <div class="col-lg-8">
+                        <input type="email" class="form-control" id="email" required [(ngModel)]="user.email" name="email" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="username">Username:</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="username" required [(ngModel)]="user.username" name="username" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="password">Password:</label>
+                    <div class="col-md-8">
+                        <input type="password" class="form-control" id="password" required [(ngModel)]="user.password" name="password"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="rpassword">Confirm password:</label>
+                    <div class="col-md-8">
+                        <input type="password" class="form-control" id="rpassword" required [(ngModel)]="password" name="rpassword" placeholder="Re-enter password to save changes" />
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" [disabled]="user.password != password">Save Changes</button>
+            </form>
+        </div>
     </div>
 </div>

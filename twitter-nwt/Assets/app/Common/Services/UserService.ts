@@ -15,7 +15,7 @@ export class UserService {
     getAllUsers(): void {
         this.getUsers()
             .subscribe(
-            users => { this.allUsers = users; console.log("Users in user service: ", this.allUsers); this.currentUser = this.allUsers[0]; console.log("Current user: ", this.currentUser); },
+            users => { this.allUsers = users; console.log("Users in user service: ", this.allUsers); },
             error => this.errorMessage = <any>error
             );
     }

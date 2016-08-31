@@ -34,7 +34,7 @@ namespace twitter_nwt.Models
         [JsonIgnore]
         public ICollection<Tweet> FavoritedTweets { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         public ICollection<User> FollowingUsers { get; set; }
 
         //[JsonIgnore]
