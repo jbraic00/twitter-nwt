@@ -23,7 +23,7 @@ var UserRegistrationComponent = (function () {
         var _this = this;
         console.log("Registering new user! New user: ", this.newUser);
         this.userService.addUser(this.newUser)
-            .subscribe(function (user) { _this.newUser = user; console.log("Updated user data: ", _this.newUser); _this.router.navigate(['/dashboard/tweets-list']); }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (user) { _this.newUser = user; console.log("Updated user data: ", _this.newUser); _this.userService.registerUser(_this.newUser); _this.router.navigate(['/dashboard/tweets-list']); }, function (error) { return _this.errorMessage = error; });
     };
     UserRegistrationComponent = __decorate([
         core_1.Component({

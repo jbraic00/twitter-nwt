@@ -27,7 +27,7 @@ export class UserRegistrationComponent {
         console.log("Registering new user! New user: ", this.newUser);
         this.userService.addUser(this.newUser)
             .subscribe(
-            user => { this.newUser = user; console.log("Updated user data: ", this.newUser); this.router.navigate(['/dashboard/tweets-list']); },
+            user => { this.newUser = user; console.log("Updated user data: ", this.newUser); this.userService.registerUser(this.newUser); this.router.navigate(['/dashboard/tweets-list']); },
             error => this.errorMessage = <any>error
             );
     }
