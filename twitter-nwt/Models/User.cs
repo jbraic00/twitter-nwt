@@ -40,7 +40,7 @@ namespace twitter_nwt.Models
         //[JsonIgnore]
         public ICollection<User> FollowedBy { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         public ICollection<Comment> Comments { get; set; }
     }
 }
