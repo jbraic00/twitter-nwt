@@ -17,7 +17,7 @@ namespace twitter_nwt.Repositories
             {
                 try
                 {
-                    var users = context.Users.Include(x => x.MyTweets).Include(x => x.FollowingUsers).Include(x => x.FollowedBy).ToList();
+                    var users = context.Users.Include(x => x.MyTweets).Include(x => x.FollowingUsers).Include(x => x.FollowedBy).Include(x => x.Comments).ToList();
                     if (users.Count == 0)
                     {
                         throw new NullReferenceException("Error when getting all users!");

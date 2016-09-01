@@ -10,17 +10,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var TweetService_1 = require('./../Common/Services/TweetService');
+var UserService_1 = require('./../Common/Services/UserService');
 var TweetsListComponent = (function () {
-    function TweetsListComponent(tweetService) {
+    function TweetsListComponent(tweetService, userService) {
         this.tweetService = tweetService;
+        this.userService = userService;
     }
     TweetsListComponent.prototype.getTweets = function () {
         var _this = this;
         this.tweetService.getTweets()
-            .subscribe(function (tweets) { _this.tweets = tweets; console.log(_this.tweets); }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (tweets) { _this.tweets = tweets; console.log('svi tweetovi', _this.tweets); }, function (error) { return _this.errorMessage = error; });
+    };
+    TweetsListComponent.prototype.getFollowingTweets = function () {
+        var followingUsers = this.currentUser.followingUsers;
+        console.log('svi koje follujem', followingUsers);
+        for (var _i = 0, followingUsers_1 = followingUsers; _i < followingUsers_1.length; _i++) {
+            var user = followingUsers_1[_i];
+            console.log('user info:', user);
+        }
     };
     TweetsListComponent.prototype.ngOnInit = function () {
+        this.currentUser = this.userService.currentUser;
         this.getTweets();
+        this.getFollowingTweets();
     };
     TweetsListComponent = __decorate([
         core_1.Component({
@@ -29,7 +41,7 @@ var TweetsListComponent = (function () {
             templateUrl: 'tweets-list.template.html',
             styleUrls: ['./../../../../Content/tweets-list-style.css'],
         }), 
-        __metadata('design:paramtypes', [TweetService_1.TweetService])
+        __metadata('design:paramtypes', [TweetService_1.TweetService, UserService_1.UserService])
     ], TweetsListComponent);
     return TweetsListComponent;
 }());
