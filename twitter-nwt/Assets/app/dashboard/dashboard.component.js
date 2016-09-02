@@ -16,7 +16,7 @@ var DashboardComponent = (function () {
     DashboardComponent = __decorate([
         core_1.Component({
             selector: 'dashboard',
-            template: "\n        <a class=\"btn btn-primary\" routerLink=\"/dashboard/tweets-list\" routerLinkActive=\"active\">Tweets</a>\n        <a class=\"btn btn-danger\" routerLink=\"/dashboard/profile\" routerLinkActive=\"active\">Profile</a>\n        <router-outlet></router-outlet>\n    "
+            template: "\n        <a class=\"btn btn-primary\" routerLink=\"/dashboard/tweets-list\" routerLinkActive=\"active\">Tweets</a>\n        <a class=\"btn btn-danger\" routerLink=\"/dashboard/profile\" routerLinkActive=\"active\">Profile</a>\n        <a class=\"btn btn-info\" routerLink=\"/dashboard/others-profile/2\" routerLinkActive=\"active\">Harley's Profile</a>\n        <router-outlet></router-outlet>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], DashboardComponent);

@@ -26,6 +26,9 @@ var UserService = (function () {
             .map(this.extractData)
             .catch(this.handleError);
     };
+    UserService.prototype.getUserById = function (id) {
+        return this.allUsers.find(function (user) { return user.id == id; });
+    };
     UserService.prototype.updateUser = function (user) {
         var updatedUser = {
             Id: user.id,
