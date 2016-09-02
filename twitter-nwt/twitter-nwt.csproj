@@ -268,6 +268,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Assets\app\others-profile\others-profile.template.html" />
     <Content Include="Assets\app\profile\profile.template.html" />
     <Content Include="Assets\app\user-log-in\user-log-in.template.html" />
     <Content Include="Assets\app\tweets\tweets-list.template.html" />
@@ -5163,6 +5164,7 @@
     <TypeScriptCompile Include="Assets\app\dashboard\dashboard.module.ts" />
     <TypeScriptCompile Include="Assets\app\dashboard\dashboard.routing.ts" />
     <TypeScriptCompile Include="Assets\app\main.ts" />
+    <TypeScriptCompile Include="Assets\app\others-profile\others-profile.component.ts" />
     <TypeScriptCompile Include="Assets\app\profile\profile.component.ts" />
     <TypeScriptCompile Include="Assets\app\rxjs-operators.ts" />
     <TypeScriptCompile Include="Assets\app\tweets\tweets-list.component.ts" />
