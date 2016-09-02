@@ -1,4 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable }        from 'rxjs/Observable';
 import { TweetService } from './../Common/Services/TweetService';
 import { UserService } from './../Common/Services/UserService';
@@ -17,7 +18,7 @@ export class TweetsListComponent implements OnInit {
     tweets: Tweet[];
     followingUsers: User[];
     currentUser: User;
-    constructor(private tweetService: TweetService, private userService: UserService ) { }
+    constructor(private tweetService: TweetService, private userService: UserService, private router: Router) { }
 
     /*getTweets() {
         this.tweetService.getTweets()
@@ -45,4 +46,7 @@ export class TweetsListComponent implements OnInit {
         this.getFollowingTweets();        
     }
 
+    goToProfile(id: number) {
+        this.router.navigate(['/dashboard/others-profile', id]);
+    }
 }

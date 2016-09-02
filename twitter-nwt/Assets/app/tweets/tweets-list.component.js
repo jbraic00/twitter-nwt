@@ -9,12 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var TweetService_1 = require('./../Common/Services/TweetService');
 var UserService_1 = require('./../Common/Services/UserService');
 var TweetsListComponent = (function () {
-    function TweetsListComponent(tweetService, userService) {
+    function TweetsListComponent(tweetService, userService, router) {
         this.tweetService = tweetService;
         this.userService = userService;
+        this.router = router;
     }
     TweetsListComponent.prototype.getFollowingTweets = function () {
         this.followingUsers = this.currentUser.followingUsers;
@@ -31,6 +33,9 @@ var TweetsListComponent = (function () {
         this.currentUser = this.userService.currentUser;
         this.getFollowingTweets();
     };
+    TweetsListComponent.prototype.goToProfile = function (id) {
+        this.router.navigate(['/dashboard/others-profile', id]);
+    };
     TweetsListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
@@ -38,7 +43,7 @@ var TweetsListComponent = (function () {
             templateUrl: 'tweets-list.template.html',
             styleUrls: ['./../../../../Content/tweets-list-style.css'],
         }), 
-        __metadata('design:paramtypes', [TweetService_1.TweetService, UserService_1.UserService])
+        __metadata('design:paramtypes', [TweetService_1.TweetService, UserService_1.UserService, router_1.Router])
     ], TweetsListComponent);
     return TweetsListComponent;
 }());

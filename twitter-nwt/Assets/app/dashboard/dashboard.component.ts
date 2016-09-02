@@ -8,7 +8,6 @@ import './../rxjs-operators';
     template: `
         <a class="btn btn-primary" routerLink="/dashboard/tweets-list" routerLinkActive="active">Tweets</a>
         <a class="btn btn-danger" routerLink="/dashboard/profile" routerLinkActive="active">Profile</a>
-        <a class="btn btn-info" routerLink="/dashboard/others-profile/2" routerLinkActive="active">Harley's Profile</a>
         <router-outlet></router-outlet>
     `
 })
