@@ -16,22 +16,19 @@ var TweetsListComponent = (function () {
         this.tweetService = tweetService;
         this.userService = userService;
     }
-    TweetsListComponent.prototype.getTweets = function () {
-        var _this = this;
-        this.tweetService.getTweets()
-            .subscribe(function (tweets) { _this.tweets = tweets; console.log('svi tweetovi', _this.tweets); }, function (error) { return _this.errorMessage = error; });
-    };
     TweetsListComponent.prototype.getFollowingTweets = function () {
-        var followingUsers = this.currentUser.followingUsers;
-        console.log('svi koje follujem', followingUsers);
-        for (var _i = 0, followingUsers_1 = followingUsers; _i < followingUsers_1.length; _i++) {
-            var user = followingUsers_1[_i];
-            console.log('user info:', user);
+        this.followingUsers = this.currentUser.followingUsers;
+        var allUsers = this.followingUsers;
+        for (var _i = 0, allUsers_1 = allUsers; _i < allUsers_1.length; _i++) {
+            var user = allUsers_1[_i];
+            this.tweets.push.apply(this.tweets, user.myTweets);
         }
+        console.log('useri:', this.followingUsers);
+        console.log('tweetovi?:', this.tweets);
     };
     TweetsListComponent.prototype.ngOnInit = function () {
+        this.tweets = [];
         this.currentUser = this.userService.currentUser;
-        this.getTweets();
         this.getFollowingTweets();
     };
     TweetsListComponent = __decorate([
