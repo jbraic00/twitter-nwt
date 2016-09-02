@@ -14,7 +14,7 @@ namespace twitter_nwt.Models
 
         public string Text { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         public User User { get; set; }
 
         [JsonIgnore]

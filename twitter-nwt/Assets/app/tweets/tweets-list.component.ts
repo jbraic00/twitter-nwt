@@ -15,31 +15,33 @@ import { User } from './../Common/Models/User';
 export class TweetsListComponent implements OnInit {
     errorMessage: any;
     tweets: Tweet[];
-    followedTweets: Tweet[];
+    followingUsers: User[];
     currentUser: User;
-    //followedBy: User[];
     constructor(private tweetService: TweetService, private userService: UserService ) { }
 
-    getTweets() {
+    /*getTweets() {
         this.tweetService.getTweets()
             .subscribe(
             tweets => { this.tweets = tweets; console.log('svi tweetovi',this.tweets); },
             error => this.errorMessage = <any>error
             );
-    }
+    }*/
 
     getFollowingTweets() {
-        let followingUsers = this.currentUser.followingUsers;
-        console.log('svi koje follujem', followingUsers)
-        for (let user of followingUsers) {
-            console.log('user info:', user);
+        this.followingUsers = this.currentUser.followingUsers;
+        let allUsers = this.followingUsers;
+        for (let user of allUsers) {
+            this.tweets.push.apply(this.tweets, user.myTweets);
         }
 
+        console.log('useri:', this.followingUsers);
+        console.log('tweetovi?:', this.tweets);
+        
     }
 
     ngOnInit(): void {
+        this.tweets = [];
         this.currentUser = this.userService.currentUser;
-        this.getTweets();
         this.getFollowingTweets();        
     }
 
