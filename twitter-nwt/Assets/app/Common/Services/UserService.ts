@@ -26,6 +26,10 @@ export class UserService {
             .catch(this.handleError);
     }
 
+    getUserById(id: number): User {
+        return this.allUsers.find(user => user.id == id);
+    }
+
     updateUser(user: User): Observable<User> {
         let updatedUser = {
             Id: user.id,
