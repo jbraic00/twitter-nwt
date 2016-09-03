@@ -1,4 +1,4 @@
-﻿<a class="btn btn-primary pull-right" routerLink="/dashboard/profile" routerLinkActive="active">Profile</a>
+﻿<a class="btn btn-primary pull-right" routerLink="/dashboard/profile" routerLinkActive="active">Profile</a>&nbsp;<div class="pull-left text-danger">Wellcome {{currentUser.name}}&nbsp;{{currentUser.lastname}} to Twitter!</div>&nbsp;
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -14,41 +14,39 @@
                     <hr>
 
                     <ul class="media-list">
-                        <li *ngFor="let user of followingUsers" class="media">
-                            <div *ngFor="let tweet of user.myTweets">
-                                <div class="comment">
-                                    <a href="#" class="pull-left">
-                                        <img src="http://lorempixel.com/60/60/animals/?sf5saf" alt="" class="img-circle">
-                                    </a>
-                                    <div class="media-body">
-                                        <div (click)="goToProfile(user.id)" style="cursor: pointer;"><strong class="text-success">{{user.name}}&nbsp;{{user.lastname}}</strong></div>
-                                        <span class="text-muted">
-                                            <small class="text-muted">{{tweet.timeWhenTweeted | date:short}}</small>
-                                        </span>
-                                        <span class="text-muted pull-right">
-                                            <small class="btn btn-primary btn-xs"><i class="glyphicon-comment"></i> Comment</small>
-                                        </span>
-                                        <p>{{tweet.text}}</p>
+                        <li *ngFor="let tweet of filteredTweets" class="media">
+                            <div class="comment">
+                                <a href="#" class="pull-left">
+                                    <img src="http://lorempixel.com/60/60/animals/?sf5saf" alt="" class="img-circle">
+                                </a>
+                                <div class="media-body">
+                                    <div (click)="goToProfile(tweet.user.id)" style="cursor: pointer;"><strong class="text-success">{{tweet.user.name}}&nbsp;{{tweet.user.lastname}}</strong></div>
+                                    <div class="text-muted">
+                                        <small class="text-muted">{{tweet.timeWhenTweeted | date:short}}</small>
                                     </div>
-                                    <div class="clearfix"></div>
+                                    <span class="text-muted pull-right visible-sm-inline-block">
+                                        <small class="btn btn-primary btn-xs"><i class="glyphicon-comment"></i> Comment</small>
+                                    </span>
+                                    <p>{{tweet.text}}</p>
                                 </div>
-                                <ul class="media-list">
-                                    <li *ngFor="let comment of tweet.comments" class="media">
-                                        <div class="comment">
-                                            <a href="#" class="pull-left">
-                                                <img src="http://lorempixel.com/60/60/animals/?Fsf6sf6" alt="" class="img-circle">
-                                            </a>
-                                            <div class="media-body">
-                                                <strong class="text-success">{{comment.user}}</strong>
-                                                <p>
-                                                    {{comment.text}}
-                                                </p>
-                                            </div>
-                                            <div class="clearfix"></div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <ul class="media-list">
+                                <li *ngFor="let comment of tweet.comments" class="media">
+                                    <div class="comment">
+                                        <a href="#" class="pull-left">
+                                            <img src="http://lorempixel.com/60/60/animals/?Fsf6sf6" alt="" class="img-circle">
+                                        </a>
+                                        <div class="media-body">
+                                            <strong class="text-success">{{comment.user.name}} {{comment.user.lastname}}</strong>
+                                            <p>
+                                                {{comment.text}}
+                                            </p>
                                         </div>
-                                    </li>
-                                </ul>
-                            </div>                            
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </li>
+                            </ul>                           
                         </li>
                     </ul>
                 </div>

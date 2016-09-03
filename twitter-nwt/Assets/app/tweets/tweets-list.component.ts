@@ -16,18 +16,28 @@ import { User } from './../Common/Models/User';
 export class TweetsListComponent implements OnInit {
     errorMessage: any;
     tweets: Tweet[];
+    allTweets: Tweet[];
+    filteredTweets: Tweet[];
     followingUsers: User[];
     currentUser: User;
-    constructor(private tweetService: TweetService, private userService: UserService, private router: Router) { }
+    constructor(private tweetService: TweetService, private userService: UserService, private router: Router) {}
 
-    /*getTweets() {
+    getTweets() {
         this.tweetService.getTweets()
             .subscribe(
-            tweets => { this.tweets = tweets; console.log('svi tweetovi',this.tweets); },
+            allTweets => {
+                            this.allTweets = allTweets;
+                            console.log('svi tweetovi', this.allTweets);
+                            this.getFollowingTweets();
+                          },
             error => this.errorMessage = <any>error
-            );
-    }*/
+        );
 
+    }
+
+    /**
+     * Next time do this on backend!!!
+     */
     getFollowingTweets() {
         this.followingUsers = this.currentUser.followingUsers;
         let allUsers = this.followingUsers;
@@ -37,13 +47,22 @@ export class TweetsListComponent implements OnInit {
 
         console.log('useri:', this.followingUsers);
         console.log('tweetovi?:', this.tweets);
-        
+
+        for (let tweet of this.tweets) {
+            var testTweet = this.allTweets.find(item => item.text == tweet.text);
+            if (testTweet != undefined) {
+                this.filteredTweets.push(testTweet);
+            }
+        }
+
+        console.log('filtrirani?:', this.filteredTweets);
     }
 
     ngOnInit(): void {
         this.tweets = [];
+        this.filteredTweets = [];
         this.currentUser = this.userService.currentUser;
-        this.getFollowingTweets();        
+        this.getTweets();
     }
 
     goToProfile(id: number) {

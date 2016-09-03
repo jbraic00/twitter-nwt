@@ -18,6 +18,15 @@ var TweetsListComponent = (function () {
         this.userService = userService;
         this.router = router;
     }
+    TweetsListComponent.prototype.getTweets = function () {
+        var _this = this;
+        this.tweetService.getTweets()
+            .subscribe(function (allTweets) {
+            _this.allTweets = allTweets;
+            console.log('svi tweetovi', _this.allTweets);
+            _this.getFollowingTweets();
+        }, function (error) { return _this.errorMessage = error; });
+    };
     TweetsListComponent.prototype.getFollowingTweets = function () {
         this.followingUsers = this.currentUser.followingUsers;
         var allUsers = this.followingUsers;
@@ -27,11 +36,25 @@ var TweetsListComponent = (function () {
         }
         console.log('useri:', this.followingUsers);
         console.log('tweetovi?:', this.tweets);
+        var _loop_1 = function(tweet) {
+            testTweet = this_1.allTweets.find(function (item) { return item.text == tweet.text; });
+            if (testTweet != undefined) {
+                this_1.filteredTweets.push(testTweet);
+            }
+        };
+        var this_1 = this;
+        var testTweet;
+        for (var _a = 0, _b = this.tweets; _a < _b.length; _a++) {
+            var tweet = _b[_a];
+            _loop_1(tweet);
+        }
+        console.log('filtrirani?:', this.filteredTweets);
     };
     TweetsListComponent.prototype.ngOnInit = function () {
         this.tweets = [];
+        this.filteredTweets = [];
         this.currentUser = this.userService.currentUser;
-        this.getFollowingTweets();
+        this.getTweets();
     };
     TweetsListComponent.prototype.goToProfile = function (id) {
         this.router.navigate(['/dashboard/others-profile', id]);
