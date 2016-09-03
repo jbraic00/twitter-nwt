@@ -9,11 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var common_1 = require('@angular/common');
 var UserService_1 = require('./../Common/Services/UserService');
 var ProfileComponent = (function () {
-    function ProfileComponent(userService) {
+    function ProfileComponent(userService, router) {
         this.userService = userService;
+        this.router = router;
     }
     ProfileComponent.prototype.ngOnInit = function () { this.getUser(); };
     ProfileComponent.prototype.getUser = function () {
@@ -33,6 +35,10 @@ var ProfileComponent = (function () {
         this.userService.updateUser(this.updatedUser)
             .subscribe(function (user) { _this.user = user; console.log("Updated user data: ", _this.user); }, function (error) { return _this.errorMessage = error; });
     };
+    ProfileComponent.prototype.logout = function () {
+        this.userService.logout();
+        this.router.navigate(['/dashboard']);
+    };
     ProfileComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
@@ -41,7 +47,7 @@ var ProfileComponent = (function () {
             directives: [common_1.FORM_DIRECTIVES],
             styleUrls: ['./../../../../Content/forms.css']
         }), 
-        __metadata('design:paramtypes', [UserService_1.UserService])
+        __metadata('design:paramtypes', [UserService_1.UserService, router_1.Router])
     ], ProfileComponent);
     return ProfileComponent;
 }());
