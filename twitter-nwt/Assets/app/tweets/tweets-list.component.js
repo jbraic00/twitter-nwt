@@ -17,6 +17,7 @@ var TweetsListComponent = (function () {
         this.tweetService = tweetService;
         this.userService = userService;
         this.router = router;
+        this.newText = '';
     }
     TweetsListComponent.prototype.getTweets = function () {
         var _this = this;
@@ -56,6 +57,17 @@ var TweetsListComponent = (function () {
         this.filteredTweets = [];
         this.currentUser = this.userService.currentUser;
         this.getTweets();
+    };
+    TweetsListComponent.prototype.publishNewTweet = function () {
+        var _this = this;
+        var newTweet = {
+            Text: this.newText,
+            Hashtags: [],
+            UserId: this.currentUser.id
+        };
+        console.log('publish call new tweet', newTweet);
+        this.tweetService.addTweet(newTweet)
+            .subscribe(function (tweet) { console.log("New tweet: ", tweet); }, function (error) { return _this.errorMessage = error; });
     };
     TweetsListComponent.prototype.goToProfile = function (id) {
         if (id == this.currentUser.id) {

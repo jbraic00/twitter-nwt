@@ -15,12 +15,13 @@ import { User } from './../Common/Models/User';
 
 export class TweetsListComponent implements OnInit {
     errorMessage: any;
+    newText: string = ''; 
     tweets: Tweet[];
     allTweets: Tweet[];
     filteredTweets: Tweet[];
     followingUsers: User[];
     currentUser: User;
-    constructor(private tweetService: TweetService, private userService: UserService, private router: Router) {}
+    constructor(private tweetService: TweetService, private userService: UserService, private router: Router) { }
 
     getTweets() {
         this.tweetService.getTweets()
@@ -66,6 +67,21 @@ export class TweetsListComponent implements OnInit {
         this.filteredTweets = [];
         this.currentUser = this.userService.currentUser;
         this.getTweets();
+    }
+
+    publishNewTweet() {
+
+        var newTweet = {
+            Text: this.newText,
+            Hashtags: [],
+            UserId: this.currentUser.id
+        }
+        console.log('publish call new tweet', newTweet);
+        this.tweetService.addTweet(newTweet)
+            .subscribe(
+            tweet => { console.log("New tweet: ", tweet);},
+            error => this.errorMessage = <any>error
+            );
     }
 
     goToProfile(id: number) {
