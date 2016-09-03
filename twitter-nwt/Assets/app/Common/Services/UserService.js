@@ -105,6 +105,10 @@ var UserService = (function () {
         this.currentUser = user;
         this.allUsers.push(user);
     };
+    UserService.prototype.logout = function () {
+        this.currentUser = null;
+        console.log("Logout. Current user: ", this.currentUser);
+    };
     UserService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

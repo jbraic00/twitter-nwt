@@ -112,4 +112,9 @@ export class UserService {
         this.currentUser = user;
         this.allUsers.push(user);
     }
+
+    logout(): void {
+        this.currentUser = null;
+        console.log("Logout. Current user: ", this.currentUser);
+    }
 }
