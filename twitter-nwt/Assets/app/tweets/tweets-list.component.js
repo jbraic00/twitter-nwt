@@ -34,10 +34,11 @@ var TweetsListComponent = (function () {
             var user = allUsers_1[_i];
             this.tweets.push.apply(this.tweets, user.myTweets);
         }
+        this.tweets.push.apply(this.tweets, this.currentUser.myTweets);
         console.log('useri:', this.followingUsers);
         console.log('tweetovi?:', this.tweets);
         var _loop_1 = function(tweet) {
-            testTweet = this_1.allTweets.find(function (item) { return item.text == tweet.text; });
+            testTweet = this_1.allTweets.find(function (item) { return (item.text == tweet.text); });
             if (testTweet != undefined) {
                 this_1.filteredTweets.push(testTweet);
             }

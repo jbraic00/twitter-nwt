@@ -37,6 +37,7 @@ export class TweetsListComponent implements OnInit {
 
     /**
      * Next time do this on backend!!!
+     * News feed has to have tweets of users that is loged in and of the users he follows 
      */
     getFollowingTweets() {
         this.followingUsers = this.currentUser.followingUsers;
@@ -45,11 +46,13 @@ export class TweetsListComponent implements OnInit {
             this.tweets.push.apply(this.tweets, user.myTweets);
         }
 
+        this.tweets.push.apply(this.tweets, this.currentUser.myTweets);
+
         console.log('useri:', this.followingUsers);
         console.log('tweetovi?:', this.tweets);
 
-        for (let tweet of this.tweets) {
-            var testTweet = this.allTweets.find(item => item.text == tweet.text);
+        for (let tweet of this.tweets) { 
+            var testTweet = this.allTweets.find(item => (item.text == tweet.text));
             if (testTweet != undefined) {
                 this.filteredTweets.push(testTweet);
             }
