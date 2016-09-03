@@ -66,6 +66,11 @@ export class TweetsListComponent implements OnInit {
     }
 
     goToProfile(id: number) {
-        this.router.navigate(['/dashboard/others-profile', id]);
+        if (id == this.currentUser.id) {
+            this.router.navigate(['/dashboard/profile']);
+        }
+        else {
+            this.router.navigate(['/dashboard/others-profile', id]);
+        }
     }
 }

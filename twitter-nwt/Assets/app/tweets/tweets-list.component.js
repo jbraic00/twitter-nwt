@@ -57,7 +57,12 @@ var TweetsListComponent = (function () {
         this.getTweets();
     };
     TweetsListComponent.prototype.goToProfile = function (id) {
-        this.router.navigate(['/dashboard/others-profile', id]);
+        if (id == this.currentUser.id) {
+            this.router.navigate(['/dashboard/profile']);
+        }
+        else {
+            this.router.navigate(['/dashboard/others-profile', id]);
+        }
     };
     TweetsListComponent = __decorate([
         core_1.Component({

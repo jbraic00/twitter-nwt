@@ -1,4 +1,4 @@
-﻿<a class="btn btn-primary pull-right" routerLink="/dashboard/profile" routerLinkActive="active">Profile</a>&nbsp;<div class="pull-left text-danger">Wellcome {{currentUser.name}}&nbsp;{{currentUser.lastname}} to Twitter!</div>&nbsp;
+﻿<a class="btn btn-primary pull-right" routerLink="/dashboard/profile" routerLinkActive="active">Profile</a>&nbsp;<div class="pull-left text-danger">Welcome {{currentUser.name}}&nbsp;{{currentUser.lastname}} to Twitter!</div>&nbsp;
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -38,7 +38,7 @@
                                             <img src="http://lorempixel.com/60/60/animals/?Fsf6sf6" alt="" class="img-circle">
                                         </a>
                                         <div class="media-body">
-                                            <strong class="text-success">{{comment.user.name}} {{comment.user.lastname}}</strong>
+                                            <div (click)="goToProfile(comment.user.id)" style="cursor: pointer;"><strong class="text-success">{{comment.user.name}} {{comment.user.lastname}}</strong></div>
                                             <p>
                                                 {{comment.text}}
                                             </p>
