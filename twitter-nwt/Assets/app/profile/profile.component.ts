@@ -1,4 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { FORM_DIRECTIVES } from '@angular/common';
 
@@ -19,7 +20,7 @@ export class ProfileComponent implements OnInit {
     password: string;
     updatedUser: any;
 
-    constructor(private userService: UserService) { }
+    constructor(private userService: UserService, private router: Router) { }
 
     ngOnInit() { this.getUser(); }
 
@@ -42,5 +43,10 @@ export class ProfileComponent implements OnInit {
             user => { this.user = user; console.log("Updated user data: ", this.user); },
                 error => this.errorMessage = <any>error
             );
+    }
+
+    logout() {
+        this.userService.logout();
+        this.router.navigate(['/dashboard']);
     }
 }
