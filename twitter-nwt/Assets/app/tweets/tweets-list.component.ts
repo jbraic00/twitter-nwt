@@ -60,6 +60,18 @@ export class TweetsListComponent implements OnInit {
         }
 
         console.log('filtrirani?:', this.filteredTweets);
+
+        this.filteredTweets.sort(function (a, b) {
+            if (b.timeWhenTweeted < a.timeWhenTweeted) {
+                return -1;
+            } else if (b.timeWhenTweeted > a.timeWhenTweeted) {
+                return 1;
+            } else
+                return 0;
+        });
+
+        console.log('filtrirani sortirani:', this.filteredTweets);
+
     }
 
     ngOnInit(): void {
@@ -79,7 +91,7 @@ export class TweetsListComponent implements OnInit {
         console.log('publish call new tweet', newTweet);
         this.tweetService.addTweet(newTweet)
             .subscribe(
-            tweet => { console.log("New tweet: ", tweet);},
+            tweet => { console.log("New tweet: ", tweet); this.filteredTweets.unshift(tweet); this.newText = ''; },
             error => this.errorMessage = <any>error
             );
     }

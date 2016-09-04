@@ -51,6 +51,17 @@ var TweetsListComponent = (function () {
             _loop_1(tweet);
         }
         console.log('filtrirani?:', this.filteredTweets);
+        this.filteredTweets.sort(function (a, b) {
+            if (b.timeWhenTweeted < a.timeWhenTweeted) {
+                return -1;
+            }
+            else if (b.timeWhenTweeted > a.timeWhenTweeted) {
+                return 1;
+            }
+            else
+                return 0;
+        });
+        console.log('filtrirani sortirani:', this.filteredTweets);
     };
     TweetsListComponent.prototype.ngOnInit = function () {
         this.tweets = [];
@@ -67,7 +78,7 @@ var TweetsListComponent = (function () {
         };
         console.log('publish call new tweet', newTweet);
         this.tweetService.addTweet(newTweet)
-            .subscribe(function (tweet) { console.log("New tweet: ", tweet); }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (tweet) { console.log("New tweet: ", tweet); _this.filteredTweets.unshift(tweet); _this.newText = ''; }, function (error) { return _this.errorMessage = error; });
     };
     TweetsListComponent.prototype.goToProfile = function (id) {
         if (id == this.currentUser.id) {
