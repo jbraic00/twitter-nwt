@@ -12,12 +12,14 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var TweetService_1 = require('./../Common/Services/TweetService');
 var UserService_1 = require('./../Common/Services/UserService');
+var Hashtag_1 = require('./../Common/Models/Hashtag');
 var TweetsListComponent = (function () {
     function TweetsListComponent(tweetService, userService, router) {
         this.tweetService = tweetService;
         this.userService = userService;
         this.router = router;
         this.newText = '';
+        this.hashtags = [];
     }
     TweetsListComponent.prototype.getTweets = function () {
         var _this = this;
@@ -69,13 +71,34 @@ var TweetsListComponent = (function () {
         this.currentUser = this.userService.currentUser;
         this.getTweets();
     };
+    TweetsListComponent.prototype.getHashtags = function (data) {
+        var hashtaginfo;
+        var dataFirstPart;
+        var dataSecondPart;
+        var i;
+        var newHashtags = [];
+        var startIndex = data.indexOf("#");
+        while (startIndex != -1) {
+            hashtaginfo = "";
+            for (i = startIndex; data[i] != " " && i < data.length; i++) {
+                hashtaginfo = hashtaginfo.concat(data[i]);
+            }
+            dataFirstPart = data.slice(0, startIndex);
+            dataSecondPart = data.slice(startIndex + hashtaginfo.length, data.length);
+            data = dataFirstPart.concat(dataSecondPart);
+            newHashtags.push(new Hashtag_1.Hashtag(hashtaginfo));
+            startIndex = data.indexOf("#");
+        }
+        return newHashtags;
+    };
     TweetsListComponent.prototype.publishNewTweet = function () {
         var _this = this;
         var newTweet = {
             Text: this.newText,
-            Hashtags: [],
+            Hashtags: this.hashtags,
             UserId: this.currentUser.id
         };
+        newTweet.Hashtags = this.getHashtags(this.newText);
         console.log('publish call new tweet', newTweet);
         this.tweetService.addTweet(newTweet)
             .subscribe(function (tweet) { console.log("New tweet: ", tweet); _this.filteredTweets.unshift(tweet); _this.newText = ''; }, function (error) { return _this.errorMessage = error; });
