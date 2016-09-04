@@ -5,7 +5,7 @@ export class Hashtag {
     public text: string;
     public tweets: Tweet[];
 
-    constructor(id: number = 1, text: string, tweets: Tweet[] = []) {
+    constructor(text: string = '', id: number = 1, tweets: Tweet[] = []) {
         this.id = id;
         this.text = text;
         this.tweets = tweets;
