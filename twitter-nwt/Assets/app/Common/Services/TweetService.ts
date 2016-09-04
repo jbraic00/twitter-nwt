@@ -1,5 +1,5 @@
 ﻿import { Injectable }     from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import { Tweet }          from './../Models/Tweet';
 
@@ -15,6 +15,20 @@ export class TweetService {
             .map(this.extractData)
             .catch(this.handleError);
     }
+
+    addTweet(tweet): Observable<Tweet> {
+
+        let body = JSON.stringify(tweet);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        console.log("In addTweet()!");
+        console.log(body);
+        return this.http.post('api/tweets/add', body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     private extractData(res: Response) {
         let body = res.json();
         return body || {};

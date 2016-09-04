@@ -21,6 +21,16 @@ var TweetService = (function () {
             .map(this.extractData)
             .catch(this.handleError);
     };
+    TweetService.prototype.addTweet = function (tweet) {
+        var body = JSON.stringify(tweet);
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        console.log("In addTweet()!");
+        console.log(body);
+        return this.http.post('api/tweets/add', body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     TweetService.prototype.extractData = function (res) {
         var body = res.json();
         return body || {};

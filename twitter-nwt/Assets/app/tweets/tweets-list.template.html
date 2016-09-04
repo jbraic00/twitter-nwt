@@ -7,9 +7,9 @@
                     Recent tweets
                 </div>
                 <div class="panel-body comments">
-                    <textarea class="form-control" placeholder="New tweet..." rows="5"></textarea>
+                    <textarea class="form-control" id="newTweet" maxlength="140" placeholder="New tweet..." rows="2" [(ngModel)]="newText"></textarea>
                     <br>
-                    <button type="button" class="btn btn-info pull-right">Publish</button>
+                    <button type="button" class="btn btn-info pull-right" (click)="publishNewTweet()">Publish</button>
                     <div class="clearfix"></div>
                     <hr>
 
