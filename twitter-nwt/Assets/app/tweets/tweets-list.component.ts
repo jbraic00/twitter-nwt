@@ -5,6 +5,7 @@ import { TweetService } from './../Common/Services/TweetService';
 import { UserService } from './../Common/Services/UserService';
 import { Tweet } from './../Common/Models/Tweet';
 import { User } from './../Common/Models/User';
+import { Hashtag } from './../Common/Models/Hashtag';
 
 @Component({
     moduleId: module.id,
@@ -15,7 +16,8 @@ import { User } from './../Common/Models/User';
 
 export class TweetsListComponent implements OnInit {
     errorMessage: any;
-    newText: string = ''; 
+    newText: string = '';
+    hashtags: Hashtag[] = [];
     tweets: Tweet[];
     allTweets: Tweet[];
     filteredTweets: Tweet[];
@@ -36,12 +38,12 @@ export class TweetsListComponent implements OnInit {
         this.tweetService.getTweets()
             .subscribe(
             allTweets => {
-                            this.allTweets = allTweets;
-                            console.log('svi tweetovi', this.allTweets);
-                            this.getFollowingTweets();
-                          },
+                this.allTweets = allTweets;
+                console.log('svi tweetovi', this.allTweets);
+                this.getFollowingTweets();
+            },
             error => this.errorMessage = <any>error
-        );
+            );
 
     }
 
@@ -61,7 +63,7 @@ export class TweetsListComponent implements OnInit {
         console.log('useri:', this.followingUsers);
         console.log('tweetovi?:', this.tweets);
 
-        for (let tweet of this.tweets) { 
+        for (let tweet of this.tweets) {
             var testTweet = this.allTweets.find(item => (item.text == tweet.text));
             if (testTweet != undefined) {
                 this.filteredTweets.push(testTweet);
@@ -82,13 +84,43 @@ export class TweetsListComponent implements OnInit {
         console.log('filtrirani sortirani:', this.filteredTweets);
 
     }
-    
+
+    getHashtags(data: string): Hashtag[] {
+
+        var hashtaginfo: string;
+        var dataFirstPart: string;
+        var dataSecondPart: string;
+
+        var i: number;
+        var newHashtags: Hashtag[] = [];
+
+        var startIndex = data.indexOf("#");
+        while (startIndex != -1) {
+            hashtaginfo = "";
+            for (i = startIndex; data[i] != " " && i < data.length; i++) {
+                hashtaginfo = hashtaginfo.concat(data[i]);
+            }
+            dataFirstPart = data.slice(0, startIndex);
+            dataSecondPart = data.slice(startIndex + hashtaginfo.length, data.length);
+            data = dataFirstPart.concat(dataSecondPart);
+
+            newHashtags.push(new Hashtag(hashtaginfo));
+
+            startIndex = data.indexOf("#");
+        }
+
+        return newHashtags;
+    }
+
     publishNewTweet() {
         var newTweet = {
             Text: this.newText,
-            Hashtags: [],
+            Hashtags: this.hashtags,
             UserId: this.currentUser.id
         }
+
+        newTweet.Hashtags = this.getHashtags(this.newText);
+
         console.log('publish call new tweet', newTweet);
         this.tweetService.addTweet(newTweet)
             .subscribe(
