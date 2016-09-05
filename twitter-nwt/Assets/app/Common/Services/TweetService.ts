@@ -22,8 +22,6 @@ export class TweetService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        console.log("In addTweet()!");
-        console.log(body);
         return this.http.post('api/tweets/add', body, options)
             .map(this.extractData)
             .catch(this.handleError);

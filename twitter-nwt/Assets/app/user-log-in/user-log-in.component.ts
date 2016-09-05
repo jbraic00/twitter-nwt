@@ -11,7 +11,7 @@ import { UserService } from './../Common/Services/UserService';
     selector: 'user-log-in-form',
     templateUrl: 'user-log-in.template.html',
     directives: [FORM_DIRECTIVES],
-    styleUrls: ['./../../../../Content/forms.css']
+    styleUrls: ['./../../../../Content/forms.css','./../../../../Content/general-page.css' ]
 })
 
 export class UserLogInComponent {

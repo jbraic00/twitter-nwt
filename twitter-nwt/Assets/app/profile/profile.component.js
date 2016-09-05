@@ -20,7 +20,6 @@ var ProfileComponent = (function () {
     ProfileComponent.prototype.ngOnInit = function () { this.getUser(); };
     ProfileComponent.prototype.getUser = function () {
         this.user = this.userService.currentUser;
-        console.log("In component: ", this.user);
     };
     ProfileComponent.prototype.updateUser = function () {
         var _this = this;
@@ -33,7 +32,7 @@ var ProfileComponent = (function () {
             email: this.user.email
         };
         this.userService.updateUser(this.updatedUser)
-            .subscribe(function (user) { _this.user = user; console.log("Updated user data: ", _this.user); }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (user) { _this.user = user; }, function (error) { return _this.errorMessage = error; });
     };
     ProfileComponent.prototype.logout = function () {
         this.userService.logout();

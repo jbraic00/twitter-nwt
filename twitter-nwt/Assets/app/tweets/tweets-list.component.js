@@ -45,8 +45,6 @@ var TweetsListComponent = (function () {
             this.tweets.push.apply(this.tweets, user.myTweets);
         }
         this.tweets.push.apply(this.tweets, this.currentUser.myTweets);
-        console.log('useri:', this.followingUsers);
-        console.log('tweetovi?:', this.tweets);
         var _loop_1 = function(tweet) {
             testTweet = this_1.allTweets.find(function (item) { return (item.text == tweet.text); });
             if (testTweet != undefined) {
@@ -59,7 +57,6 @@ var TweetsListComponent = (function () {
             var tweet = _b[_a];
             _loop_1(tweet);
         }
-        console.log('filtrirani?:', this.filteredTweets);
         this.filteredTweets.sort(function (a, b) {
             if (b.timeWhenTweeted < a.timeWhenTweeted) {
                 return -1;
@@ -70,7 +67,6 @@ var TweetsListComponent = (function () {
             else
                 return 0;
         });
-        console.log('filtrirani sortirani:', this.filteredTweets);
     };
     TweetsListComponent.prototype.getHashtags = function (data) {
         var hashtaginfo;
@@ -100,9 +96,8 @@ var TweetsListComponent = (function () {
             UserId: this.currentUser.id
         };
         newTweet.Hashtags = this.getHashtags(this.newText);
-        console.log('publish call new tweet', newTweet);
         this.tweetService.addTweet(newTweet)
-            .subscribe(function (tweet) { console.log("New tweet: ", tweet); _this.filteredTweets.unshift(tweet); _this.newText = ''; }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (tweet) { _this.filteredTweets.unshift(tweet); _this.newText = ''; }, function (error) { return _this.errorMessage = error; });
     };
     TweetsListComponent.prototype.goToProfile = function (id) {
         if (id == this.currentUser.id) {

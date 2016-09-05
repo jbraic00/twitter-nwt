@@ -41,8 +41,6 @@ var UserService = (function () {
         var body = JSON.stringify(updatedUser);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        console.log("In updateUser()!");
-        console.log(body);
         return this.http.put('api/users/update', body, options)
             .map(this.extractData)
             .catch(this.handleError);
@@ -59,15 +57,12 @@ var UserService = (function () {
         var body = JSON.stringify(newUser);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        console.log("In addUser()!");
-        console.log(body);
         return this.http.post('api/users/add', body, options)
             .map(this.extractData)
             .catch(this.handleError);
     };
     UserService.prototype.extractData = function (res) {
         var body = res.json();
-        console.log("Extract data: ", body);
         return body || {};
     };
     UserService.prototype.handleError = function (error) {
@@ -99,7 +94,6 @@ var UserService = (function () {
                 this.currentUser = user;
             }
         }
-        console.log("Saved current user: ", this.currentUser);
     };
     UserService.prototype.registerUser = function (user) {
         this.currentUser = user;
@@ -107,7 +101,6 @@ var UserService = (function () {
     };
     UserService.prototype.logout = function () {
         this.currentUser = null;
-        console.log("Logout. Current user: ", this.currentUser);
     };
     UserService = __decorate([
         core_1.Injectable(), 

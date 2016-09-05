@@ -1,5 +1,17 @@
-﻿<a class="btn btn-primary pull-right" routerLink="/dashboard/profile" routerLinkActive="active">Profile</a>&nbsp;<div class="pull-left text-danger">Welcome to Twitter, {{currentUser.name}}&nbsp;{{currentUser.lastname}}!</div>&nbsp;
+﻿<!--<a class="btn btn-primary pull-right" routerLink="/dashboard/profile" routerLinkActive="active">Profile</a>&nbsp;
+<div class="pull-left text-danger">Welcome to Twitter, {{currentUser.name}}&nbsp;{{currentUser.lastname}}!</div>&nbsp;-->
+
 <div class="container">
+    <div class="row">
+        <div class="col-md-pull-2 col-sm-pull-2">
+            <a href="#" class="pull-right" routerLink="/dashboard/profile" routerLinkActive="active">
+                <img class="img-thumbnail" style="margin-left:13px;" src="./../../../../Content/Images/{{currentUser.id}}-profile.jpg" alt="">
+                <div class="caption">
+                    <h4 class="text-primary text-center">{{currentUser.name}}&nbsp;{{currentUser.lastname}}</h4>
+                </div>
+            </a>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-4">
             <div class="input-group">
@@ -11,9 +23,6 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-info">
-                <div class="panel-heading">
-                    Recent tweets
-                </div>
                 <div class="panel-body comments">
                     <textarea class="form-control" id="newTweet" maxlength="140" placeholder="New tweet..." rows="2" [(ngModel)]="newText"></textarea>
                     <br>
@@ -25,16 +34,11 @@
                         <li *ngFor="let tweet of (filteredTweets | contains:searchKeyword)" class="media">
                             <div class="comment">
                                 <a href="#" class="pull-left">
-                                    <img src="http://lorempixel.com/60/60/animals/?sf5saf" alt="" class="img-circle">
+                                    <img src="./../../../../Content/Images/{{tweet.user.id}}-thumbnail.jpg" alt="" class="img-circle">
                                 </a>
                                 <div class="media-body">
-                                    <div (click)="goToProfile(tweet.user.id)" style="cursor: pointer;"><strong class="text-success">{{tweet.user.name}}&nbsp;{{tweet.user.lastname}}</strong></div>
-                                    <div class="text-muted">
-                                        <small class="text-muted">{{tweet.timeWhenTweeted | date:short}}</small>
-                                    </div>
-                                    <span class="text-muted pull-right visible-sm-inline-block">
-                                        <small class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-comment"></i> Comment</small>
-                                    </span>
+                                    <div (click)="goToProfile(tweet.user.id)" class="userName" style="cursor: pointer;"><strong class="text-success">{{tweet.user.name}}&nbsp;{{tweet.user.lastname}}</strong></div>
+                                    <small class="text-muted">&nbsp;&nbsp;{{tweet.timeWhenTweeted | date:short}}</small>
                                     <p>{{tweet.text}}</p>
                                 </div>
                                 <div class="clearfix"></div>
@@ -43,7 +47,7 @@
                                 <li *ngFor="let comment of tweet.comments" class="media">
                                     <div class="comment">
                                         <a href="#" class="pull-left">
-                                            <img src="http://lorempixel.com/60/60/animals/?Fsf6sf6" alt="" class="img-circle">
+                                            <img src="./../../../../Content/Images/{{comment.user.id}}-thumbnail.jpg" alt="" class="img-circle">
                                         </a>
                                         <div class="media-body">
                                             <div (click)="goToProfile(comment.user.id)" style="cursor: pointer;"><strong class="text-success">{{comment.user.name}} {{comment.user.lastname}}</strong></div>

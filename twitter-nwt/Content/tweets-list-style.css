@@ -1,8 +1,10 @@
 ﻿.container {
-    margin-top: 60px;
+    margin-top: 20px;
 }
 .comments ul ul {
     margin-left: 60px;
+    border-radius: 15px;
+    background-color: #fff8dc;
 }
 .comments .comment img {
     margin-right: 20px;
@@ -10,6 +12,10 @@
 .comments .comment {
     padding: 6px;
 }
+.userName {
+    float: left;
+}
 .comments .comment:hover {
     background: #eee;
+    border-radius: 15px;
 }

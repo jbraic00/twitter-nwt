@@ -19,7 +19,6 @@ export class OthersProfileComponent implements OnInit {
         this.route.params.forEach((params: Params) => {
             let id = +params['id'];
             this.user = this.userService.getUserById(id);
-            console.log("Viewing users profile: ", this.user);
         });
     }
 }
