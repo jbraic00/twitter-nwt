@@ -8,11 +8,13 @@ import { UserRegistrationComponent } from './../user-registration/user-registrat
 import { UserLogInComponent } from './../user-log-in/user-log-in.component';
 import { OthersProfileComponent } from './../others-profile/others-profile.component';
 
+import {  ContainsPipe} from './../Common/Pipes/ContainsPipe';
+
 import { dashboardRouting } from './dashboard.routing';
 
 @NgModule({
     imports: [CommonModule, dashboardRouting],
-    declarations: [DashboardComponent, ProfileComponent, TweetsListComponent, UserRegistrationComponent, UserLogInComponent, OthersProfileComponent]
+    declarations: [DashboardComponent, ProfileComponent, TweetsListComponent, UserRegistrationComponent, UserLogInComponent, OthersProfileComponent, ContainsPipe]
 })
 
 export class DashboardModule { }

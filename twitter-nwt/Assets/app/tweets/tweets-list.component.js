@@ -20,7 +20,14 @@ var TweetsListComponent = (function () {
         this.router = router;
         this.newText = '';
         this.hashtags = [];
+        this.searchKeyword = '';
     }
+    TweetsListComponent.prototype.ngOnInit = function () {
+        this.tweets = [];
+        this.filteredTweets = [];
+        this.currentUser = this.userService.currentUser;
+        this.getTweets();
+    };
     TweetsListComponent.prototype.getTweets = function () {
         var _this = this;
         this.tweetService.getTweets()
@@ -64,12 +71,6 @@ var TweetsListComponent = (function () {
                 return 0;
         });
         console.log('filtrirani sortirani:', this.filteredTweets);
-    };
-    TweetsListComponent.prototype.ngOnInit = function () {
-        this.tweets = [];
-        this.filteredTweets = [];
-        this.currentUser = this.userService.currentUser;
-        this.getTweets();
     };
     TweetsListComponent.prototype.getHashtags = function (data) {
         var hashtaginfo;

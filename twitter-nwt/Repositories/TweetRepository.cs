@@ -37,7 +37,7 @@ namespace twitter_nwt.Repositories
             {
                 try
                 {
-                    var user = context.Users.FirstOrDefault(u => u.Id == newTweet.UserId);
+                    var user = context.Users.Include(x => x.MyTweets).Include(x => x.FollowingUsers).Include(x => x.FollowedBy).FirstOrDefault(u => u.Id == newTweet.UserId);
                     if (user == null)
                     {
                         throw new NullReferenceException("Error when getting user!");
