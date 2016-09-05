@@ -42,8 +42,7 @@ export class UserService {
         let body = JSON.stringify(updatedUser);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        console.log("In updateUser()!");
-        console.log(body);
+
         return this.http.put('api/users/update', body, options)
             .map(this.extractData)
             .catch(this.handleError);
@@ -61,8 +60,7 @@ export class UserService {
         let body = JSON.stringify(newUser);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        console.log("In addUser()!");
-        console.log(body);
+
         return this.http.post('api/users/add', body, options)
             .map(this.extractData)
             .catch(this.handleError);
@@ -70,7 +68,6 @@ export class UserService {
 
     private extractData(res: Response) {
         let body = res.json();
-        console.log("Extract data: ", body);
         return body || {};
     }
 
@@ -105,7 +102,6 @@ export class UserService {
                 this.currentUser = user;
             }
         }
-        console.log("Saved current user: ", this.currentUser);
     }
 
     registerUser(user: User): void {
@@ -115,6 +111,5 @@ export class UserService {
 
     logout(): void {
         this.currentUser = null;
-        console.log("Logout. Current user: ", this.currentUser);
     }
 }

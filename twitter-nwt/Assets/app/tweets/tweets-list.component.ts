@@ -47,10 +47,6 @@ export class TweetsListComponent implements OnInit {
 
     }
 
-    /**
-     * Next time do this on backend!!!
-     * News feed has to have tweets of users that is loged in and of the users he follows 
-     */
     getFollowingTweets() {
         this.followingUsers = this.currentUser.followingUsers;
         let allUsers = this.followingUsers;
@@ -60,17 +56,12 @@ export class TweetsListComponent implements OnInit {
 
         this.tweets.push.apply(this.tweets, this.currentUser.myTweets);
 
-        console.log('useri:', this.followingUsers);
-        console.log('tweetovi?:', this.tweets);
-
         for (let tweet of this.tweets) {
             var testTweet = this.allTweets.find(item => (item.text == tweet.text));
             if (testTweet != undefined) {
                 this.filteredTweets.push(testTweet);
             }
         }
-
-        console.log('filtrirani?:', this.filteredTweets);
 
         this.filteredTweets.sort(function (a, b) {
             if (b.timeWhenTweeted < a.timeWhenTweeted) {
@@ -80,8 +71,6 @@ export class TweetsListComponent implements OnInit {
             } else
                 return 0;
         });
-
-        console.log('filtrirani sortirani:', this.filteredTweets);
 
     }
 
@@ -121,10 +110,9 @@ export class TweetsListComponent implements OnInit {
 
         newTweet.Hashtags = this.getHashtags(this.newText);
 
-        console.log('publish call new tweet', newTweet);
         this.tweetService.addTweet(newTweet)
             .subscribe(
-            tweet => { console.log("New tweet: ", tweet); this.filteredTweets.unshift(tweet); this.newText = ''; },
+            tweet => { this.filteredTweets.unshift(tweet); this.newText = ''; },
             error => this.errorMessage = <any>error
             );
     }

@@ -21,7 +21,6 @@ var OthersProfileComponent = (function () {
         this.route.params.forEach(function (params) {
             var id = +params['id'];
             _this.user = _this.userService.getUserById(id);
-            console.log("Viewing users profile: ", _this.user);
         });
     };
     OthersProfileComponent = __decorate([

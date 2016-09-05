@@ -39,7 +39,7 @@ var UserLogInComponent = (function () {
             selector: 'user-log-in-form',
             templateUrl: 'user-log-in.template.html',
             directives: [common_1.FORM_DIRECTIVES],
-            styleUrls: ['./../../../../Content/forms.css']
+            styleUrls: ['./../../../../Content/forms.css', './../../../../Content/general-page.css']
         }), 
         __metadata('design:paramtypes', [UserService_1.UserService, router_1.Router])
     ], UserLogInComponent);

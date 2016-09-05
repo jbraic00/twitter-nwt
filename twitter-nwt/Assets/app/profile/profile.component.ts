@@ -26,7 +26,6 @@ export class ProfileComponent implements OnInit {
 
     getUser() {
         this.user = this.userService.currentUser;
-        console.log("In component: ", this.user);
     }
 
     updateUser() {
@@ -40,7 +39,7 @@ export class ProfileComponent implements OnInit {
         }
         this.userService.updateUser(this.updatedUser)
             .subscribe(
-            user => { this.user = user; console.log("Updated user data: ", this.user); },
+            user => { this.user = user; },
                 error => this.errorMessage = <any>error
             );
     }

@@ -3062,6 +3062,14 @@
     <Content Include="Assets\systemjs.config.js" />
     <Content Include="Content\forms.css" />
     <Content Include="Content\general-page.css" />
+    <Content Include="Content\Images\3-profile.jpg" />
+    <Content Include="Content\Images\3-thumbnail.jpg" />
+    <Content Include="Content\Images\2-profile.jpg" />
+    <Content Include="Content\Images\2-thumbnail.jpg" />
+    <Content Include="Content\Images\1-profile.jpg" />
+    <Content Include="Content\Images\1-thumbnail.jpg" />
+    <Content Include="Content\Images\4-profile.jpg" />
+    <Content Include="Content\Images\4-thumbnail.jpg" />
     <Content Include="Content\tweets-list-style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

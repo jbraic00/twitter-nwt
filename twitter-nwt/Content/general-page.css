@@ -1,1 +1,9 @@
 ﻿.panel-body .member .mainTitle { text-align: center; color: #48d1cc; font-size: xx-large}
+
+html {
+    background-color: aliceblue;
+}
+
+body {
+    background-color: aliceblue !important;
+}
