@@ -21,6 +21,15 @@ export class TweetsListComponent implements OnInit {
     filteredTweets: Tweet[];
     followingUsers: User[];
     currentUser: User;
+    searchKeyword: string = '';
+
+    ngOnInit(): void {
+        this.tweets = [];
+        this.filteredTweets = [];
+        this.currentUser = this.userService.currentUser;
+        this.getTweets();
+    }
+
     constructor(private tweetService: TweetService, private userService: UserService, private router: Router) { }
 
     getTweets() {
@@ -73,16 +82,8 @@ export class TweetsListComponent implements OnInit {
         console.log('filtrirani sortirani:', this.filteredTweets);
 
     }
-
-    ngOnInit(): void {
-        this.tweets = [];
-        this.filteredTweets = [];
-        this.currentUser = this.userService.currentUser;
-        this.getTweets();
-    }
-
+    
     publishNewTweet() {
-
         var newTweet = {
             Text: this.newText,
             Hashtags: [],

@@ -16,6 +16,7 @@ var tweets_list_component_1 = require('./../tweets/tweets-list.component');
 var user_registration_component_1 = require('./../user-registration/user-registration.component');
 var user_log_in_component_1 = require('./../user-log-in/user-log-in.component');
 var others_profile_component_1 = require('./../others-profile/others-profile.component');
+var ContainsPipe_1 = require('./../Common/Pipes/ContainsPipe');
 var dashboard_routing_1 = require('./dashboard.routing');
 var DashboardModule = (function () {
     function DashboardModule() {
@@ -23,7 +24,7 @@ var DashboardModule = (function () {
     DashboardModule = __decorate([
         core_1.NgModule({
             imports: [common_1.CommonModule, dashboard_routing_1.dashboardRouting],
-            declarations: [dashboard_component_1.DashboardComponent, profile_component_1.ProfileComponent, tweets_list_component_1.TweetsListComponent, user_registration_component_1.UserRegistrationComponent, user_log_in_component_1.UserLogInComponent, others_profile_component_1.OthersProfileComponent]
+            declarations: [dashboard_component_1.DashboardComponent, profile_component_1.ProfileComponent, tweets_list_component_1.TweetsListComponent, user_registration_component_1.UserRegistrationComponent, user_log_in_component_1.UserLogInComponent, others_profile_component_1.OthersProfileComponent, ContainsPipe_1.ContainsPipe]
         }), 
         __metadata('design:paramtypes', [])
     ], DashboardModule);

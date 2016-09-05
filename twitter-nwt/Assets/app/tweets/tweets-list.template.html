@@ -1,6 +1,14 @@
 ﻿<a class="btn btn-primary pull-right" routerLink="/dashboard/profile" routerLinkActive="active">Profile</a>&nbsp;<div class="pull-left text-danger">Welcome to Twitter, {{currentUser.name}}&nbsp;{{currentUser.lastname}}!</div>&nbsp;
 <div class="container">
     <div class="row">
+        <div class="col-md-4">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search #hashtags..." [(ngModel)]="searchKeyword" />
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
         <div class="col-md-12">
             <div class="panel panel-info">
                 <div class="panel-heading">
@@ -14,7 +22,7 @@
                     <hr>
 
                     <ul class="media-list">
-                        <li *ngFor="let tweet of filteredTweets" class="media">
+                        <li *ngFor="let tweet of (filteredTweets | contains:searchKeyword)" class="media">
                             <div class="comment">
                                 <a href="#" class="pull-left">
                                     <img src="http://lorempixel.com/60/60/animals/?sf5saf" alt="" class="img-circle">
@@ -25,7 +33,7 @@
                                         <small class="text-muted">{{tweet.timeWhenTweeted | date:short}}</small>
                                     </div>
                                     <span class="text-muted pull-right visible-sm-inline-block">
-                                        <small class="btn btn-primary btn-xs"><i class="glyphicon-comment"></i> Comment</small>
+                                        <small class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-comment"></i> Comment</small>
                                     </span>
                                     <p>{{tweet.text}}</p>
                                 </div>
